@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "FloorMapImage.pdf",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
