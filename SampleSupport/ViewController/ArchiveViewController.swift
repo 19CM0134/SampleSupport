@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 // 履歴画面(TableView)
 class ArchiveViewController: UIViewController {
     
