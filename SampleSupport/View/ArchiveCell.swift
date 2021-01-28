@@ -37,8 +37,9 @@ class ArchiveCell: UITableViewCell {
     
     private let timeLabel: UILabel = {
        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 25)
+        label.font = UIFont.systemFont(ofSize: 15)
         label.textColor = .black
+        label.text = "01/01 00:00"
         
         return label
     }()
@@ -59,6 +60,12 @@ class ArchiveCell: UITableViewCell {
         artworkName.anchor(top: categoryName.bottomAnchor,
                            left: categoryName.leftAnchor,
                            paddingTop: 10)
+        
+        addSubview(timeLabel)
+        timeLabel.anchor(top: topAnchor,
+                         right: rightAnchor,
+                         paddingTop: 10,
+                         paddingRight: 15)
         
     }
     

@@ -7,19 +7,15 @@
 
 import UIKit
 
-class ImageView: UIView {
+class ImageView: UIView, UIGestureRecognizerDelegate {
     
     // MARK: - Properties
     
-    let scrollView: UIScrollView
     let imageView: UIImageView
     
     // MARK: - Init
     
     init(frame: CGRect, imageName: String) {
-        self.scrollView = UIScrollView()
-        self.scrollView.maximumZoomScale = 5.0
-        self.scrollView.minimumZoomScale = 0.5
         
         self.imageView = UIImageView()
         // 余白
@@ -28,13 +24,14 @@ class ImageView: UIView {
         super.init(frame: frame)
         self.backgroundColor = .white
         
-        self.addSubview(scrollView)
-        self.scrollView.delegate = self
-        
-        self.scrollView.addSubview(imageView)
-        self.imageView.contentMode = .scaleAspectFill
+        self.addSubview(imageView)
+        self.imageView.contentMode = .scaleAspectFit
         self.imageView.image = UIImage(named: imageName)
+        self.imageView.isUserInteractionEnabled = true
         
+        let pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(pinchAction(sender:)))
+        pinchGesture.delegate = self
+        imageView.addGestureRecognizer(pinchGesture)
     }
     
     required init?(coder: NSCoder) {
@@ -44,44 +41,43 @@ class ImageView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        self.scrollView.anchor(top: self.topAnchor,
-                               left: self.leftAnchor,
-                               bottom: self.bottomAnchor,
-                               right: self.rightAnchor,
-                               paddingTop: 88,
-                               paddingBottom: 80)
-        
-        self.imageView.anchor(top: self.scrollView.topAnchor,
-                              left: self.scrollView.leftAnchor,
-                              bottom: self.scrollView.bottomAnchor,
-                              right: self.scrollView.rightAnchor)
-
-    }
-}
-
-// MARK: - UIScrollViewDelegate
-
-extension ImageView: UIScrollViewDelegate {
-    
-    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
-        return self.imageView
+        self.imageView.anchor(top: self.topAnchor,
+                              left: self.leftAnchor,
+                              bottom: self.bottomAnchor,
+                              right: self.rightAnchor)
     }
     
-    func scrollViewDidZoom(_ scrollView: UIScrollView) {
-        // ズーム終了時の処理
-    }
+    var currentScale: CGFloat = 1.0
     
-    func scrollViewWillBeginZooming(_ scrollView: UIScrollView, with view: UIView?) {
-        //ズーム開始時の処理
-    }
-    
-    func zoomForScale(scale: CGFloat, center: CGPoint) -> CGRect {
-        var zoomRect: CGRect = CGRect()
-        zoomRect.size.height = self.scrollView.frame.size.height / scale
-        zoomRect.size.width = self.scrollView.frame.size.width / scale
-        zoomRect.origin.x = center.x - zoomRect.size.width / 2.0
-        zoomRect.origin.y = center.y - zoomRect.size.height / 2.0
-        
-        return zoomRect
+    @objc func pinchAction(sender: UIPinchGestureRecognizer) {
+        switch sender.state {
+        case .began, .changed:
+            // senderのscaleは、指を動かしていない状態が1.0となる
+            // 現在の拡大率に、(scaleから1を引いたもの) / 10(補正率)を加算する
+            currentScale = currentScale + (sender.scale - 1) / 10
+            // 拡大率が基準から外れる場合は、補正する
+            if currentScale < 0.8 {
+                currentScale = 1.0
+            } else if currentScale > 2.5 {
+                currentScale = 2.5
+            }
+            // 計算後の拡大率で、imageViewを拡大縮小する
+            imageView.transform = CGAffineTransform(scaleX: currentScale,
+                                                    y: currentScale)
+            
+        default:
+            // ピンチ中と同様だが、拡大率に範囲が異なる
+            if currentScale < 0.8 {
+                currentScale = 1.0
+            } else if currentScale > 2.0 {
+                currentScale = 2.0
+            }
+            
+            // 拡大率が基準から外れている場合、指を話した時にアニメーションで拡大率を補正する
+            UIView.animate(withDuration: 0.2, animations: {
+                self.imageView.transform = CGAffineTransform(scaleX: self.currentScale,
+                                                             y: self.currentScale)
+            }, completion: nil)
+        }
     }
 }
