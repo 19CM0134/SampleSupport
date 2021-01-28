@@ -9,8 +9,12 @@ import UIKit
 
 class ImageView: UIView {
     
+    // MARK: - Properties
+    
     let scrollView: UIScrollView
     let imageView: UIImageView
+    
+    // MARK: - Init
     
     init(frame: CGRect, imageName: String) {
         self.scrollView = UIScrollView()
@@ -54,6 +58,8 @@ class ImageView: UIView {
 
     }
 }
+
+// MARK: - UIScrollViewDelegate
 
 extension ImageView: UIScrollViewDelegate {
     

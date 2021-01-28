@@ -10,32 +10,20 @@ import CoreNFC
 
 class MainTabBarController: UITabBarController {
     
-    var session: NFCNDEFReaderSession?
+    // MARK: - Properties
     
-//    private var foundationView: UIView = {
-//        let view = UIView()
-//
-//
-//        return view
-//    }()
+    var session: NFCNDEFReaderSession?
     
     private var button: UIButton = {
         let btn = UIButton()
-        btn.setImage(UIImage(named: "nfctagImage"), for: .normal)
+        btn.setBackgroundImage(UIImage(named: "nfcBlack"), for: .normal)
         btn.addTarget(self, action: #selector(tappedBtn), for: .touchUpInside)
         
         return btn
     }()
-    
-    private var label: UILabel = {
-        let label = UILabel()
-        label.text = "NFC"
-        label.textColor = .black
-        label.font = UIFont.systemFont(ofSize: 10)
-        
-        return label
-    }()
 
+    // MARK: - Init
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -45,73 +33,74 @@ class MainTabBarController: UITabBarController {
         setBtn()
     }
     
+    // MARK: - Helpers
+    
     fileprivate func setBtn() {
         view.addSubview(button)
         
-        button.setDimensions(width: 20 , height: 20)
+        button.setDimensions(width: 50 , height: 50)
         button.anchor(top: tabBar.topAnchor,
                       left: tabBar.leftAnchor,
-                      paddingTop: 10,
-                      paddingLeft: (UIScreen.main.bounds.width / 2) - 10)
+                      paddingLeft: (UIScreen.main.bounds.width / 2) - 25)
+        button.layer.cornerRadius = 25
+        button.backgroundColor = .black
+        button.layer.borderColor = UIColor.darkGray.cgColor
+        button.layer.borderWidth = 1.0
         
-        view.addSubview(label)
-        label.anchor(top: button.bottomAnchor,
-                     left: button.leftAnchor,
-                     paddingTop: 5)
     }
     
-    fileprivate func showAlert() {
-        
-        let alertController = UIAlertController(title: "Scanning NFC Tag",
-                                                message: nil,
-                                                preferredStyle: .actionSheet)
-        let customView = UIView()
-        alertController.view.addSubview(customView)
-        customView.anchor(top: alertController.view.topAnchor,
-                          left: alertController.view.leftAnchor,
-                          right: alertController.view.rightAnchor,
-                          paddingTop: 45,
-                          paddingLeft: 10,
-                          paddingRight: 10,
-                          height: 250)
-        
-        let customText = UITextView()
-        customView.addSubview(customText)
-        customText.text = "スキャンを開始します"
-        customText.textColor = .black
-        customText.backgroundColor = .clear
-        customText.textAlignment = .center
-        customText.anchor(top: customView.topAnchor,
-                          left: customView.leftAnchor,
-                          right: customView.rightAnchor,
-                          paddingTop: 10,
-                          paddingLeft: 10,
-                          paddingRight: 10,
-                          height: 40)
-        customText.font = UIFont.systemFont(ofSize: 30)
-        
-        alertController.view.translatesAutoresizingMaskIntoConstraints = false
-        alertController.view.heightAnchor.constraint(equalToConstant: 430).isActive = true
-        
-        
-        let selectAction = UIAlertAction(title: "Scan Complete",
-                                         style: .default) {
-            (action) in
-            print("selection")
-            let vc = DetailedWorksViewController()
-            vc.setter(categoryName: "学生作品", artwork: "ART SCREEN", imageName: "WS000034")
-            let nextvc = MainNavigationController(rootViewController: vc)
-            nextvc.modalPresentationStyle = .fullScreen
-            self.present(nextvc, animated: true, completion: nil)
-        }
-        
-        let cancelAction = UIAlertAction(title: "Cancel",
-                                         style: .cancel,
-                                         handler: nil)
-        alertController.addAction(selectAction)
-        alertController.addAction(cancelAction)
-        self.present(alertController, animated: true, completion: nil)
-    }
+//    fileprivate func showAlert() {
+//
+//        let alertController = UIAlertController(title: "Scanning NFC Tag",
+//                                                message: nil,
+//                                                preferredStyle: .actionSheet)
+//        let customView = UIView()
+//        alertController.view.addSubview(customView)
+//        customView.anchor(top: alertController.view.topAnchor,
+//                          left: alertController.view.leftAnchor,
+//                          right: alertController.view.rightAnchor,
+//                          paddingTop: 45,
+//                          paddingLeft: 10,
+//                          paddingRight: 10,
+//                          height: 250)
+//
+//        let customText = UITextView()
+//        customView.addSubview(customText)
+//        customText.text = "スキャンを開始します"
+//        customText.textColor = .black
+//        customText.backgroundColor = .clear
+//        customText.textAlignment = .center
+//        customText.anchor(top: customView.topAnchor,
+//                          left: customView.leftAnchor,
+//                          right: customView.rightAnchor,
+//                          paddingTop: 10,
+//                          paddingLeft: 10,
+//                          paddingRight: 10,
+//                          height: 40)
+//        customText.font = UIFont.systemFont(ofSize: 30)
+//
+//        alertController.view.translatesAutoresizingMaskIntoConstraints = false
+//        alertController.view.heightAnchor.constraint(equalToConstant: 430).isActive = true
+//
+//
+//        let selectAction = UIAlertAction(title: "Scan Complete",
+//                                         style: .default) {
+//            (action) in
+//            print("selection")
+//            let vc = DetailedWorksViewController()
+//            vc.setter(categoryName: "学生作品", artwork: "ART SCREEN", imageName: "WS000034")
+//            let nextvc = MainNavigationController(rootViewController: vc)
+//            nextvc.modalPresentationStyle = .fullScreen
+//            self.present(nextvc, animated: true, completion: nil)
+//        }
+//
+//        let cancelAction = UIAlertAction(title: "Cancel",
+//                                         style: .cancel,
+//                                         handler: nil)
+//        alertController.addAction(selectAction)
+//        alertController.addAction(cancelAction)
+//        self.present(alertController, animated: true, completion: nil)
+//    }
     
     fileprivate func showNFC() {
         
@@ -127,18 +116,24 @@ class MainTabBarController: UITabBarController {
         }
     }
     
+    // MARK: - Selecters
+    
     @objc func tappedBtn() {
         print("tapped Button")
         
 //        showAlert()
-        
         showNFC()
-        
     }
     
 }
 
+// MARK: - NFCNDEFReaderSessionDelegate
+
 extension MainTabBarController: NFCNDEFReaderSessionDelegate {
+    func readerSessionDidBecomeActive(_ session: NFCNDEFReaderSession) {
+        
+    }
+    
     // エラーの場合(ユーザがキャンセルを押しても処理される)
     func readerSession(_ session: NFCNDEFReaderSession, didInvalidateWithError error: Error) {
         
@@ -153,12 +148,10 @@ extension MainTabBarController: NFCNDEFReaderSessionDelegate {
             }
         }
         
-        let vc = DetailedWorksViewController()
-        vc.setter(categoryName: "学生作品", artwork: "ART SCREEN", imageName: "WS000034")
-        let nextvc = MainNavigationController(rootViewController: vc)
-        nextvc.modalPresentationStyle = .fullScreen
-        self.present(nextvc, animated: true, completion: nil)
+//        let vc = DetailedWorksViewController()
+//        vc.setter(categoryName: "学生作品", artwork: "ART SCREEN", imageName: "WS000034")
+//        let nextvc = MainNavigationController(rootViewController: vc)
+//        nextvc.modalPresentationStyle = .fullScreen
+//        self.present(nextvc, animated: true, completion: nil)
     }
-    
-    
 }

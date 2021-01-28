@@ -9,7 +9,11 @@ import UIKit
 
 class FloorMapViewController: UIViewController {
     
+    // MARK: - Properties
+    
     @IBOutlet weak private var menuBtn: UIButton!
+    
+    // MARK: - Init
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,12 +26,16 @@ class FloorMapViewController: UIViewController {
         recognitionUI()
     }
     
+    // MARK: - Helpers
+    
     fileprivate func recognitionUI() {
         
         menuBtn.setImage(UIImage(systemName: "ellipsis"), for: .normal)
         menuBtn.tintColor = .black
         menuBtn.addTarget(self, action: #selector(tappedMenuBtn), for: .touchUpInside)
     }
+    
+    // MARK: - Selecters
     
     @objc func tappedMenuBtn() {
         print("Select Menu Button From FloorMapViewController")

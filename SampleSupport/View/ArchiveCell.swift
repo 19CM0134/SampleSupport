@@ -9,6 +9,8 @@ import UIKit
 
 class ArchiveCell: UITableViewCell {
     
+    // MARK: - Properties
+    
     private var category = "Category"
     private var name = "Artwork"
     
@@ -17,7 +19,6 @@ class ArchiveCell: UITableViewCell {
         self.name = name
     }
     
-    // MARK: - Properties
     private let categoryName: UILabel = {
        let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 15)
@@ -33,7 +34,16 @@ class ArchiveCell: UITableViewCell {
         
         return label
     }()
+    
+    private let timeLabel: UILabel = {
+       let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 25)
+        label.textColor = .black
+        
+        return label
+    }()
 
+    // MARK: - Init
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)

@@ -520,13 +520,14 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = SampleSupport/SampleSupport.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = J4JZS5VFXW;
+				DEVELOPMENT_TEAM = 6H8RBA4DXP;
 				INFOPLIST_FILE = SampleSupport/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = jp.ac.jec.19cm0134.SampleSupport;
+				PRODUCT_BUNDLE_IDENTIFIER = jp.ac.jec.cm.demo.SampleSupport;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -540,13 +541,14 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = SampleSupport/SampleSupport.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = J4JZS5VFXW;
+				DEVELOPMENT_TEAM = 6H8RBA4DXP;
 				INFOPLIST_FILE = SampleSupport/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = jp.ac.jec.19cm0134.SampleSupport;
+				PRODUCT_BUNDLE_IDENTIFIER = jp.ac.jec.cm.demo.SampleSupport;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

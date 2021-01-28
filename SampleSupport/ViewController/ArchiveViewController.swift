@@ -19,6 +19,8 @@ class ArchiveViewController: UIViewController {
     private var tableView = UITableView()
     private let reuseIdentifier = "ArchiveCell"
     private var archiveHeader = ArchiveHeader()
+    
+    // MARK: - Init
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +28,8 @@ class ArchiveViewController: UIViewController {
         view.backgroundColor = .white
         configureTableView()
     }
+    
+    // MARK: - Helpers
     
     fileprivate func configureTableView() {
         tableView.register(ArchiveCell.self, forCellReuseIdentifier: reuseIdentifier)

@@ -9,7 +9,11 @@ import UIKit
 
 class TopImageView: UIView {
     
+    // MARK: - Properties
+    
     let imageView: UIImageView
+    
+    // MARK: - Init
     
     init(frame: CGRect, imageName: String) {
         
@@ -36,8 +40,6 @@ class TopImageView: UIView {
         self.imageView.anchor(top: self.topAnchor,
                                left: self.leftAnchor,
                                bottom: self.bottomAnchor,
-                               right: self.rightAnchor,
-                               paddingTop: 88,
-                               paddingBottom: 80)
+                               right: self.rightAnchor)
     }
 }
