@@ -58,8 +58,8 @@ class ImageView: UIView, UIGestureRecognizerDelegate {
             // 拡大率が基準から外れる場合は、補正する
             if currentScale < 0.8 {
                 currentScale = 1.0
-            } else if currentScale > 2.5 {
-                currentScale = 2.5
+            } else if currentScale > 3.0 {
+                currentScale = 3.0
             }
             // 計算後の拡大率で、imageViewを拡大縮小する
             imageView.transform = CGAffineTransform(scaleX: currentScale,
@@ -69,8 +69,8 @@ class ImageView: UIView, UIGestureRecognizerDelegate {
             // ピンチ中と同様だが、拡大率に範囲が異なる
             if currentScale < 0.8 {
                 currentScale = 1.0
-            } else if currentScale > 2.0 {
-                currentScale = 2.0
+            } else if currentScale > 2.5 {
+                currentScale = 2.5
             }
             
             // 拡大率が基準から外れている場合、指を話した時にアニメーションで拡大率を補正する

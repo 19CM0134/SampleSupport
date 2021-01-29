@@ -20,6 +20,15 @@ class ArchiveHeader: UIView {
         return label
     }()
     
+    private let exhibitionTitle: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.boldSystemFont(ofSize: 17.5)
+        label.textColor = .black
+        label.text = "電子学園 創立70周年記念 『感謝。そして挑戦』"
+        
+        return label
+    }()
+    
     // MARK: - Init
     
     override init(frame: CGRect) {
@@ -27,10 +36,16 @@ class ArchiveHeader: UIView {
         
         self.backgroundColor = .white
         addSubview(titleLabel)
-        titleLabel.anchor(left: leftAnchor,
-                          bottom: bottomAnchor,
-                          paddingLeft: 15,
-                          paddingBottom: 30)
+        titleLabel.anchor(top: topAnchor,
+                          left: leftAnchor,
+                          paddingTop: 20,
+                          paddingLeft: 15)
+        
+        addSubview(exhibitionTitle)
+        exhibitionTitle.anchor(top: titleLabel.bottomAnchor,
+                             left: leftAnchor,
+                             paddingTop: 10,
+                             paddingLeft: 15)
     }
     
     required init?(coder: NSCoder) {

@@ -14,6 +14,7 @@ class ArchiveViewController: UIViewController {
     private var category = ["オリジナル教材", "キャリア教育", "キャリア教育", "キャリア教育", "キャリア教育", "キャリア教育", "コンテスト・競技大会", "学生作品"]
     private var artwork = ["オリジナル教材", "キャリアサポーター", "スポーツフェスティバル", "学生自治会・地域貢献活動", "日専祭", "留学生サポートについて", "技能五輪全国大会・国際大会での実績", "ART SCREEN"]
     private var image = ["WS000027", "WS000028", "WS000029", "WS000030", "WS000032", "WS000033", "WS000031", "WS000034"]
+    private var time = ["1/29 12:12", "1/29 12:21", "1/29 12:35", "1/29 12: 49", "1/29 13:00", "1/29 13:08", "1/29 13:20", "1/29 13:34"]
     
     private var tableView = UITableView()
     private let reuseIdentifier = "ArchiveCell"
@@ -36,6 +37,7 @@ class ArchiveViewController: UIViewController {
         archiveHeader.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 100)
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.backgroundColor = .white
         tableView.rowHeight = 70
         
         view.addSubview(tableView)
@@ -58,7 +60,7 @@ extension ArchiveViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! ArchiveCell
-        cell.setText(category: category[indexPath.row], name: artwork[indexPath.row])
+        cell.setText(category: category[indexPath.row], name: artwork[indexPath.row], time: time[indexPath.row])
         
         return cell
     }

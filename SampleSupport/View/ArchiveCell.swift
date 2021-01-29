@@ -13,10 +13,12 @@ class ArchiveCell: UITableViewCell {
     
     private var category = "Category"
     private var name = "Artwork"
+    private var time = "01/01 00:00"
     
-    public func setText(category: String, name: String) {
+    public func setText(category: String, name: String, time: String) {
         self.category = category
         self.name = name
+        self.time = time
     }
     
     private let categoryName: UILabel = {
@@ -29,7 +31,7 @@ class ArchiveCell: UITableViewCell {
     
     private let artworkName: UILabel = {
        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 25)
+        label.font = UIFont.boldSystemFont(ofSize: 22)
         label.textColor = .black
         
         return label
@@ -38,8 +40,7 @@ class ArchiveCell: UITableViewCell {
     private let timeLabel: UILabel = {
        let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 15)
-        label.textColor = .black
-        label.text = "01/01 00:00"
+        label.textColor = .darkGray
         
         return label
     }()
@@ -74,6 +75,7 @@ class ArchiveCell: UITableViewCell {
         
         categoryName.text = category
         artworkName.text = name
+        timeLabel.text = time
     }
 
     required init?(coder: NSCoder) {
