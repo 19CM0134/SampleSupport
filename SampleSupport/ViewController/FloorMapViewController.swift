@@ -7,11 +7,15 @@
 
 import UIKit
 
-class FloorMapViewController: UIViewController {
+class FloorMapViewController: UIViewController, UIScrollViewDelegate {
     
     // MARK: - Properties
     
     @IBOutlet weak private var menuBtn: UIButton!
+    @IBOutlet weak var scrollView: UIScrollView!
+    var image: UIImage? = nil
+    var imageUrl: String = ""
+    var imageView = UIImageView()
     
     // MARK: - Init
     
@@ -19,10 +23,19 @@ class FloorMapViewController: UIViewController {
         super.viewDidLoad()
 
         view.backgroundColor = .white
-        let mainView = ImageView(frame: self.view.bounds, imageName: "mapImage")
-        mainView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        self.view.addSubview(mainView)
+        self.scrollView.delegate = self
+        scrollView.maximumZoomScale = 5.0
+        scrollView.minimumZoomScale = 1.0
         
+        self.imageView.frame = CGRect(x: 0,
+                                      y: 0,
+                                      width: scrollView.frame.width,
+                                      height: scrollView.frame.height)
+        imageView.image = UIImage(named: "map")
+        scrollView.addSubview(imageView)
+        self.imageView.backgroundColor = .white
+        self.imageView.contentMode = .scaleAspectFit
+
         recognitionUI()
     }
     
@@ -35,6 +48,28 @@ class FloorMapViewController: UIViewController {
         menuBtn.addTarget(self, action: #selector(tappedMenuBtn), for: .touchUpInside)
     }
     
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return self.imageView
+    }
+    
+    func scrollViewDidZoom(_ scrollView: UIScrollView) {
+        // ズーム終了時の処理
+    }
+    
+    func scrollViewWillBeginZooming(_ scrollView: UIScrollView, with view: UIView?) {
+        // ズーム開始時の処理
+    }
+    
+    func zoomForScale(scale:CGFloat, center: CGPoint) -> CGRect{
+        var zoomRect: CGRect = CGRect()
+        zoomRect.size.height = self.scrollView.frame.size.height / scale
+        zoomRect.size.width = self.scrollView.frame.size.width  / scale
+        zoomRect.origin.x = center.x - zoomRect.size.width / 2.0
+        zoomRect.origin.y = center.y - zoomRect.size.height / 2.0
+        
+        return zoomRect
+    }
+    
     // MARK: - Selecters
     
     @objc func tappedMenuBtn() {
@@ -42,5 +77,4 @@ class FloorMapViewController: UIViewController {
         let vc = MenuViewController()
         self.present(vc, animated: true, completion: nil)
     }
-
 }

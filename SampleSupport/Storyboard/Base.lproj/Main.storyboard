@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="65D-51-3cg">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
@@ -14,7 +14,7 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="HomeViewController" customModule="SampleSupport" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -22,7 +22,7 @@
                     <navigationItem key="navigationItem" id="Kh8-OU-5Vf">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="Llh-6b-wZe">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="1L1-Fk-FeI">
-                                <rect key="frame" x="322" y="11" width="72" height="22"/>
+                                <rect key="frame" x="302" y="11" width="72" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" image="ellipsis" catalog="system"/>
@@ -35,37 +35,66 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1957.9710144927537" y="88.392857142857139"/>
+            <point key="canvasLocation" x="1956.9230769230769" y="88.151658767772503"/>
         </scene>
         <!--Detailed Works View Controller-->
         <scene sceneID="wge-am-QM8">
             <objects>
-                <viewController id="P5T-Vc-sYW" customClass="DetailedWorksViewController" customModule="SampleSupport" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="detail" id="P5T-Vc-sYW" customClass="DetailedWorksViewController" customModule="SampleSupport" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vqH-fI-UeH">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xHh-06-Zsb">
+                                <rect key="frame" x="0.0" y="88" width="390" height="722"/>
+                                <viewLayoutGuide key="contentLayoutGuide" id="T2z-ek-Z3g"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="tb0-40-74r"/>
+                            </scrollView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="Avg-LF-hKq"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="xHh-06-Zsb" firstAttribute="trailing" secondItem="Avg-LF-hKq" secondAttribute="trailing" id="Chy-wC-Duh"/>
+                            <constraint firstItem="xHh-06-Zsb" firstAttribute="leading" secondItem="Avg-LF-hKq" secondAttribute="leading" id="dOI-Vh-ZxC"/>
+                            <constraint firstItem="xHh-06-Zsb" firstAttribute="bottom" secondItem="Avg-LF-hKq" secondAttribute="bottom" id="gm4-3A-5g1"/>
+                            <constraint firstItem="xHh-06-Zsb" firstAttribute="top" secondItem="vqH-fI-UeH" secondAttribute="top" constant="88" id="v6R-P0-MFB"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="scrollView" destination="xHh-06-Zsb" id="Zj7-rJ-oHi"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="98B-am-v4Y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2884" y="88"/>
+            <point key="canvasLocation" x="2883.0769230769229" y="87.440758293838854"/>
         </scene>
         <!--Floor Map View Controller-->
         <scene sceneID="AUq-gB-o0v">
             <objects>
                 <viewController id="qRW-hJ-Fpe" customClass="FloorMapViewController" customModule="SampleSupport" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="f2P-St-la0">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="o69-vg-YfW">
+                                <rect key="frame" x="0.0" y="88" width="390" height="673"/>
+                                <viewLayoutGuide key="contentLayoutGuide" id="YEh-jY-xzL"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="QLi-Ww-e1d"/>
+                            </scrollView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="AG7-au-Eug"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="o69-vg-YfW" firstAttribute="leading" secondItem="AG7-au-Eug" secondAttribute="leading" id="CUb-Bg-MOT"/>
+                            <constraint firstItem="o69-vg-YfW" firstAttribute="trailing" secondItem="AG7-au-Eug" secondAttribute="trailing" id="Ck7-O6-Cof"/>
+                            <constraint firstItem="o69-vg-YfW" firstAttribute="top" secondItem="f2P-St-la0" secondAttribute="top" constant="88" id="Iwb-6x-9da"/>
+                            <constraint firstAttribute="bottom" secondItem="o69-vg-YfW" secondAttribute="bottom" constant="83" id="f8S-kQ-kkW"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ToX-9Y-iNm">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="KOI-Bx-Hef">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="3dQ-hx-Ia9">
-                                <rect key="frame" x="321" y="11" width="73" height="22"/>
+                                <rect key="frame" x="301" y="11" width="73" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="ellipsis" catalog="system"/>
                             </button>
@@ -73,6 +102,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="menuBtn" destination="3dQ-hx-Ia9" id="TrO-P8-HMX"/>
+                        <outlet property="scrollView" destination="o69-vg-YfW" id="9eC-6o-usg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DzB-bX-c4d" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -84,7 +114,7 @@
             <objects>
                 <viewController id="ScZ-ii-Opp" customClass="MenuViewController" customModule="SampleSupport" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" alpha="0.5" contentMode="scaleToFill" id="do0-8W-Xn8">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="5k2-ik-Hng"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -99,7 +129,7 @@
             <objects>
                 <viewController id="VD5-hG-FjL" customClass="ArchiveViewController" customModule="SampleSupport" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iEZ-uJ-oJB">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="S2B-k0-YE3"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -116,7 +146,7 @@
                     <tabBarItem key="tabBarItem" title="Home" image="home" selectedImage="selectedHome" id="Hd6-Da-HJT"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="nNx-oP-J1h">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="390" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -154,7 +184,7 @@
                     <tabBarItem key="tabBarItem" title="Floor Map" image="map" catalog="system" selectedImage="map.fill" id="2JR-D1-asO"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="vxD-FM-bU2">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="390" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

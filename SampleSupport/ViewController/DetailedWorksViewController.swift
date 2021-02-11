@@ -7,11 +7,15 @@
 
 import UIKit
 
-class DetailedWorksViewController: UIViewController {
+class DetailedWorksViewController: UIViewController, UIScrollViewDelegate {
     
     // MARK: - Properties
     
     private let WIDTH = UIScreen.main.bounds.width
+    @IBOutlet weak var scrollView: UIScrollView!
+    var image: UIImage? = nil
+    var imageUrl: String = ""
+    var imageView = UIImageView()
     
     private var categoryName = "CategoryName"
     private var artwork = "Artwork"
@@ -30,9 +34,18 @@ class DetailedWorksViewController: UIViewController {
 
         view.backgroundColor = .white
         
-        let mainView = ImageView(frame: self.view.bounds, imageName: imageName)
-        mainView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        self.view.addSubview(mainView)
+        self.scrollView.delegate = self
+        scrollView.maximumZoomScale = 5.0
+        scrollView.minimumZoomScale = 1.0
+        
+        self.imageView.frame = CGRect(x: 0,
+                                      y: 0,
+                                      width: scrollView.frame.width,
+                                      height: scrollView.frame.height)
+        imageView.image = UIImage(named: imageName)
+        scrollView.addSubview(imageView)
+        self.imageView.backgroundColor = .white
+        self.imageView.contentMode = .scaleAspectFit
     }
     
     override func viewDidLayoutSubviews() {
@@ -61,10 +74,31 @@ class DetailedWorksViewController: UIViewController {
                                                                 action: #selector(tappedBackBtn))
     }
     
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return self.imageView
+    }
+    
+    func scrollViewDidZoom(_ scrollView: UIScrollView) {
+        // ズーム終了時の処理
+    }
+    
+    func scrollViewWillBeginZooming(_ scrollView: UIScrollView, with view: UIView?) {
+        // ズーム開始時の処理
+    }
+    
+    func zoomForScale(scale:CGFloat, center: CGPoint) -> CGRect{
+        var zoomRect: CGRect = CGRect()
+        zoomRect.size.height = self.scrollView.frame.size.height / scale
+        zoomRect.size.width = self.scrollView.frame.size.width  / scale
+        zoomRect.origin.x = center.x - zoomRect.size.width / 2.0
+        zoomRect.origin.y = center.y - zoomRect.size.height / 2.0
+        
+        return zoomRect
+    }
+    
     // MARK: - Selecters
     
     @objc func tappedBackBtn() {
         self.dismiss(animated: true, completion: nil)
     }
-
 }

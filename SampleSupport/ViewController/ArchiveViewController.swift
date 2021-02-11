@@ -68,7 +68,8 @@ extension ArchiveViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         print("selected TableViewCell")
-        let vc = DetailedWorksViewController()
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        let vc = sb.instantiateViewController(identifier: "detail") as! DetailedWorksViewController
         vc.setter(categoryName: category[indexPath.row], artwork: artwork[indexPath.row], imageName: image[indexPath.row])
         let nextvc = MainNavigationController(rootViewController: vc)
         nextvc.modalPresentationStyle = .fullScreen

@@ -50,8 +50,8 @@ class MainTabBarController: UITabBarController {
     fileprivate func showNFC() {
         guard NFCNDEFReaderSession.readingAvailable else {
             let alertController = UIAlertController(
-                title: "Scanning Not Supported",
-                message: "This device doesn't support tag scanning.",
+                title: "サポートされていません",
+                message: "ご使用の端末はサポートされていません",
                 preferredStyle: .alert
             )
             alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))

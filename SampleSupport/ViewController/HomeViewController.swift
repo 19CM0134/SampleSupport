@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import CoreNFC
 
 class HomeViewController: UIViewController {
     

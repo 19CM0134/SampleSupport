@@ -45,6 +45,8 @@ class ImageView: UIView, UIGestureRecognizerDelegate {
                               left: self.leftAnchor,
                               bottom: self.bottomAnchor,
                               right: self.rightAnchor)
+        print("WIDTH: \(self.imageView.frame.width)")
+        print("HEIGHT: \(self.imageView.frame.height)")
     }
     
     var currentScale: CGFloat = 1.0
