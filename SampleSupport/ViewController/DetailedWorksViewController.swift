@@ -37,11 +37,12 @@ class DetailedWorksViewController: UIViewController, UIScrollViewDelegate {
         self.scrollView.delegate = self
         scrollView.maximumZoomScale = 5.0
         scrollView.minimumZoomScale = 1.0
+        scrollView.anchor(top: view.topAnchor,
+                          left: view.leftAnchor,
+                          bottom: view.safeAreaLayoutGuide.bottomAnchor,
+                          right: view.rightAnchor,
+                          paddingTop: 88)
         
-        self.imageView.frame = CGRect(x: 0,
-                                      y: 0,
-                                      width: scrollView.frame.width,
-                                      height: scrollView.frame.height)
         imageView.image = UIImage(named: imageName)
         scrollView.addSubview(imageView)
         self.imageView.backgroundColor = .white
@@ -52,6 +53,11 @@ class DetailedWorksViewController: UIViewController, UIScrollViewDelegate {
         super.viewDidLayoutSubviews()
         
         setNavBar()
+        
+        self.imageView.frame = CGRect(x: 0,
+                                      y: 0,
+                                      width: scrollView.frame.width,
+                                      height: scrollView.frame.height)
     }
     
     // MARK: - Helpers

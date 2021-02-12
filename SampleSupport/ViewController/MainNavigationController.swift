@@ -14,6 +14,7 @@ class MainNavigationController: UINavigationController {
 
         navigationBar.backgroundColor = .white
         navigationBar.tintColor = .black
+        navigationBar.barTintColor = .white
     }
 
 }

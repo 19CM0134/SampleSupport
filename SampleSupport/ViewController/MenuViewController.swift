@@ -137,13 +137,8 @@ class MenuViewController: UIViewController {
     @objc func tappedBtn(sender: UIButton) {
         if sender.tag == 0 {
             print("tapped 設定")
-            
-            let alertController = UIAlertController(title: "設定ボタンが押されました",
-                                                    message: "このボタンは未実装の設定画面に遷移するためのボタンです", preferredStyle: .alert)
-            alertController.addAction(UIAlertAction(title: "OK",
-                                                    style: .default,
-                                                    handler: nil))
-            present(alertController, animated: true, completion: nil)
+            let vc = SettingViewController()
+            present(vc, animated: true, completion: nil)
         } else if sender.tag == 1 {
             print("tapped 履歴")
             let vc = ArchiveViewController()

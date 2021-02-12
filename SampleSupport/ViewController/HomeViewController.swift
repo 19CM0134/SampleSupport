@@ -13,15 +13,30 @@ class HomeViewController: UIViewController {
     
     @IBOutlet weak private var menuBtn: UIButton!
     
+    private let imageView: UIImageView = {
+       let iv = UIImageView()
+        iv.backgroundColor = .white
+        iv.contentMode = .scaleAspectFit
+        
+        return iv
+    }()
+    
     // MARK: - Init
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         view.backgroundColor = .white
-        let mainView = TopImageView(frame: self.view.bounds, imageName: "apuri_TOP")
-        mainView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        self.view.addSubview(mainView)
+        
+        view.addSubview(imageView)
+        imageView.image = UIImage(named: "apuri_TOP")
+        imageView.anchor(top: view.topAnchor,
+                         left: view.leftAnchor,
+                         bottom: view.bottomAnchor,
+                         right: view.rightAnchor)
+//        let mainView = TopImageView(frame: self.view.bounds, imageName: "apuri_TOP")
+//        mainView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+//        self.view.addSubview(mainView)
         
         recognitionUI()
     }

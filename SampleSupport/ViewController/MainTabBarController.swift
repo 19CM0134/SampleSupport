@@ -29,6 +29,7 @@ class MainTabBarController: UITabBarController {
 
         tabBar.barTintColor = .white
         tabBar.tintColor = .black
+        view.backgroundColor = .white
         setBtn()
     }
     
@@ -132,6 +133,12 @@ extension MainTabBarController: NFCNDEFReaderSessionDelegate {
         
         print("didDetect")
         DispatchQueue.main.async {
+            // 時間取得
+            let date = Date()
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "yyyy/MM/dd HH:mm", options: 0, locale: Locale(identifier: "ja_jp"))
+            print("NFC読み込み時間\(dateFormatter.string(from: date))")
+            
             let vc = DetailedWorksViewController()
             vc.setter(categoryName: "学生作品", artwork: "ART SCREEN", imageName: "WS000034")
             let nextvc = MainNavigationController(rootViewController: vc)

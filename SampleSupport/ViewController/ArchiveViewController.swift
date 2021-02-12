@@ -50,6 +50,7 @@ class ArchiveViewController: UIViewController {
 }
 
 // MARK: - UITableViewDelegate & UITableViewDataSource
+
 extension ArchiveViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

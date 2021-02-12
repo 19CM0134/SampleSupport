@@ -45,20 +45,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xHh-06-Zsb">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xHh-06-Zsb">
                                 <rect key="frame" x="0.0" y="88" width="390" height="722"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <viewLayoutGuide key="contentLayoutGuide" id="T2z-ek-Z3g"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="tb0-40-74r"/>
                             </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Avg-LF-hKq"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="xHh-06-Zsb" firstAttribute="trailing" secondItem="Avg-LF-hKq" secondAttribute="trailing" id="Chy-wC-Duh"/>
-                            <constraint firstItem="xHh-06-Zsb" firstAttribute="leading" secondItem="Avg-LF-hKq" secondAttribute="leading" id="dOI-Vh-ZxC"/>
-                            <constraint firstItem="xHh-06-Zsb" firstAttribute="bottom" secondItem="Avg-LF-hKq" secondAttribute="bottom" id="gm4-3A-5g1"/>
-                            <constraint firstItem="xHh-06-Zsb" firstAttribute="top" secondItem="vqH-fI-UeH" secondAttribute="top" constant="88" id="v6R-P0-MFB"/>
-                        </constraints>
                     </view>
                     <connections>
                         <outlet property="scrollView" destination="xHh-06-Zsb" id="Zj7-rJ-oHi"/>
@@ -68,6 +63,21 @@
             </objects>
             <point key="canvasLocation" x="2883.0769230769229" y="87.440758293838854"/>
         </scene>
+        <!--Setting View Controller-->
+        <scene sceneID="Swf-y4-zJ8">
+            <objects>
+                <viewController id="hBU-mT-ewc" customClass="SettingViewController" customModule="SampleSupport" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rKO-TG-yV2">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="RRS-cg-4hw"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gQu-zT-s2S" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3773" y="101"/>
+        </scene>
         <!--Floor Map View Controller-->
         <scene sceneID="AUq-gB-o0v">
             <objects>
@@ -76,20 +86,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="o69-vg-YfW">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="o69-vg-YfW">
                                 <rect key="frame" x="0.0" y="88" width="390" height="673"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <viewLayoutGuide key="contentLayoutGuide" id="YEh-jY-xzL"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="QLi-Ww-e1d"/>
                             </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="AG7-au-Eug"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="o69-vg-YfW" firstAttribute="leading" secondItem="AG7-au-Eug" secondAttribute="leading" id="CUb-Bg-MOT"/>
-                            <constraint firstItem="o69-vg-YfW" firstAttribute="trailing" secondItem="AG7-au-Eug" secondAttribute="trailing" id="Ck7-O6-Cof"/>
-                            <constraint firstItem="o69-vg-YfW" firstAttribute="top" secondItem="f2P-St-la0" secondAttribute="top" constant="88" id="Iwb-6x-9da"/>
-                            <constraint firstAttribute="bottom" secondItem="o69-vg-YfW" secondAttribute="bottom" constant="83" id="f8S-kQ-kkW"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ToX-9Y-iNm">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="KOI-Bx-Hef">

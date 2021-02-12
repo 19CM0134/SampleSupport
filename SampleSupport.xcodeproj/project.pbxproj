@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7F5D1FFB25D6072F0099D48A /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5D1FFA25D6072F0099D48A /* SettingViewController.swift */; };
 		7FBC7C8E25B7489D00AB07EA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBC7C8D25B7489D00AB07EA /* AppDelegate.swift */; };
 		7FBC7C9025B7489D00AB07EA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBC7C8F25B7489D00AB07EA /* SceneDelegate.swift */; };
 		7FBC7C9525B7489D00AB07EA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FBC7C9325B7489D00AB07EA /* Main.storyboard */; };
@@ -47,6 +48,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7F5D1FFA25D6072F0099D48A /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		7FBC7C8A25B7489D00AB07EA /* SampleSupport.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SampleSupport.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FBC7C8D25B7489D00AB07EA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7FBC7C8F25B7489D00AB07EA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 				7FBC7CC225B74A3E00AB07EA /* MenuViewController.swift */,
 				7FBC7CC625B74A3E00AB07EA /* DetailedWorksViewController.swift */,
 				7FBC7CC325B74A3E00AB07EA /* ArchiveViewController.swift */,
+				7F5D1FFA25D6072F0099D48A /* SettingViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -334,6 +337,7 @@
 				7FBC7CD825B74A7600AB07EA /* TopImageView.swift in Sources */,
 				7FBC7CDA25B74A7600AB07EA /* ImageView.swift in Sources */,
 				7FBC7C8E25B7489D00AB07EA /* AppDelegate.swift in Sources */,
+				7F5D1FFB25D6072F0099D48A /* SettingViewController.swift in Sources */,
 				7FBC7CDB25B74A7600AB07EA /* ArchiveCell.swift in Sources */,
 				7FBC7CCB25B74A3E00AB07EA /* MainTabBarController.swift in Sources */,
 				7FBC7CCF25B74A3E00AB07EA /* FloorMapViewController.swift in Sources */,
@@ -530,7 +534,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = jp.ac.jec.cm.demo.SampleSupport;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -551,7 +555,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = jp.ac.jec.cm.demo.SampleSupport;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

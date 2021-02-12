@@ -26,17 +26,36 @@ class FloorMapViewController: UIViewController, UIScrollViewDelegate {
         self.scrollView.delegate = self
         scrollView.maximumZoomScale = 5.0
         scrollView.minimumZoomScale = 1.0
+        scrollView.anchor(top: view.topAnchor,
+                          left: view.leftAnchor,
+                          bottom: view.bottomAnchor,
+                          right: view.rightAnchor,
+                          paddingTop: 88,
+                          paddingBottom: 83)
+        scrollView.backgroundColor = .white
         
-        self.imageView.frame = CGRect(x: 0,
-                                      y: 0,
-                                      width: scrollView.frame.width,
-                                      height: scrollView.frame.height)
+        
         imageView.image = UIImage(named: "map")
         scrollView.addSubview(imageView)
         self.imageView.backgroundColor = .white
         self.imageView.contentMode = .scaleAspectFit
 
         recognitionUI()
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        
+        
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        self.imageView.frame = CGRect(x: 0,
+                                      y: 0,
+                                      width: scrollView.bounds.width,
+                                      height: scrollView.bounds.height)
     }
     
     // MARK: - Helpers
