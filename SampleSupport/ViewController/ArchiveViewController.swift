@@ -12,10 +12,10 @@ class ArchiveViewController: UIViewController {
     
     // MARK: -  Properties
     
-    private var category = ["オリジナル教材", "キャリア教育", "キャリア教育", "キャリア教育", "キャリア教育", "キャリア教育", "コンテスト・競技大会", "学生作品"]
-    private var artwork = ["オリジナル教材", "キャリアサポーター", "スポーツフェスティバル", "学生自治会・地域貢献活動", "日専祭", "留学生サポートについて", "技能五輪全国大会・国際大会での実績", "ART SCREEN"]
-    private var image = ["WS000027", "WS000028", "WS000029", "WS000030", "WS000032", "WS000033", "WS000031", "WS000034"]
-    private var time = ["1/29 12:12", "1/29 12:21", "1/29 12:35", "1/29 12: 49", "1/29 13:00", "1/29 13:08", "1/29 13:20", "1/29 13:34"]
+    private var category = ["産学連携", "オリジナル教材", "学生作品", "教員の創作活動", "コンテスト・競技大会", "学科横断取組み", "キャリア教育"]
+    private var artwork = ["NINJA THE MONSTER", "オリジナル教材", "AIMRACING", "かりきゅらすかい", "技能五輪全国・国際大会実績", "インサニア", "キャリアサポーター"]
+    private var image = ["panel01", "panel08", "panel09", "panel15", "panel16", "panel17", "panel21"]
+    private var time = ["1/29 12:12", "1/29 12:21", "1/29 12:35", "1/29 12: 49", "1/29 13:00", "1/29 13:08", "1/29 13:20"]
     
     private var tableView = UITableView()
     private let reuseIdentifier = "ArchiveCell"
@@ -55,7 +55,7 @@ extension ArchiveViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return 8
+        return artwork.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

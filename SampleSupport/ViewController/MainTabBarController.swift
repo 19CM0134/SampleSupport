@@ -122,7 +122,7 @@ extension MainTabBarController: NFCNDEFReaderSessionDelegate {
         DispatchQueue.main.async {
             let sb = UIStoryboard(name: "Main", bundle: nil)
             let vc = sb.instantiateViewController(identifier: "detail") as! DetailedWorksViewController
-            vc.setter(categoryName: "学生作品", artwork: "ART SCREEN", imageName: "WS000034")
+            vc.setter(categoryName: "学生作品", artwork: "ART SCREEN", imageName: "panel12")
             let nextvc = MainNavigationController(rootViewController: vc)
             nextvc.modalPresentationStyle = .fullScreen
             self.present(nextvc, animated: true, completion: nil)
@@ -142,7 +142,7 @@ extension MainTabBarController: NFCNDEFReaderSessionDelegate {
             
             let sb = UIStoryboard(name: "Main", bundle: nil)
             let vc = sb.instantiateViewController(identifier: "detail") as! DetailedWorksViewController
-            vc.setter(categoryName: "学生作品", artwork: "ART SCREEN", imageName: "WS000034")
+            vc.setter(categoryName: "学生作品", artwork: "ART SCREEN", imageName: "panel12")
             let nextvc = MainNavigationController(rootViewController: vc)
             nextvc.modalPresentationStyle = .fullScreen
             self.present(nextvc, animated: true, completion: nil)
