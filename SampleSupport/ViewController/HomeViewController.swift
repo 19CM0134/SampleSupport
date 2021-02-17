@@ -27,16 +27,12 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
 
         view.backgroundColor = .white
-        
         view.addSubview(imageView)
         imageView.image = UIImage(named: "apuri_TOP")
         imageView.anchor(top: view.topAnchor,
                          left: view.leftAnchor,
                          bottom: view.bottomAnchor,
                          right: view.rightAnchor)
-//        let mainView = TopImageView(frame: self.view.bounds, imageName: "apuri_TOP")
-//        mainView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-//        self.view.addSubview(mainView)
         
         recognitionUI()
     }

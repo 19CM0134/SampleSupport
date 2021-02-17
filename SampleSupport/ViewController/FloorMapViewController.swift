@@ -33,8 +33,6 @@ class FloorMapViewController: UIViewController, UIScrollViewDelegate {
                           paddingTop: 88,
                           paddingBottom: 83)
         scrollView.backgroundColor = .white
-        
-        
         imageView.image = UIImage(named: "map")
         scrollView.addSubview(imageView)
         self.imageView.backgroundColor = .white
@@ -45,7 +43,6 @@ class FloorMapViewController: UIViewController, UIScrollViewDelegate {
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        
         
     }
     

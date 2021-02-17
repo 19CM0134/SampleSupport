@@ -7,7 +7,7 @@
 
 import UIKit
 import CoreNFC
-
+// TODO: NFCタグからパネルのIDを取得する
 class MainTabBarController: UITabBarController {
     
     // MARK: - Properties

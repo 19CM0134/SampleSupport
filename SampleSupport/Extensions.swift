@@ -1,6 +1,5 @@
 //
 //  Extensions.swift
-//  SampleDesign
 //
 //  Created by cmStudent on 2020/11/27.
 //

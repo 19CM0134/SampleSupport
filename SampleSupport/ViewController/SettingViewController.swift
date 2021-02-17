@@ -75,7 +75,6 @@ class SettingViewController: UIViewController {
                      paddingTop: 25,
                      paddingLeft: 15,
                      paddingRight: 15)
-        
         categoryName.text = category[0]
     }
     

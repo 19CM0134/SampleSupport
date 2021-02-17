@@ -11,6 +11,7 @@ import UIKit
 class ArchiveViewController: UIViewController {
     
     // MARK: -  Properties
+    
     private var category = ["オリジナル教材", "キャリア教育", "キャリア教育", "キャリア教育", "キャリア教育", "キャリア教育", "コンテスト・競技大会", "学生作品"]
     private var artwork = ["オリジナル教材", "キャリアサポーター", "スポーツフェスティバル", "学生自治会・地域貢献活動", "日専祭", "留学生サポートについて", "技能五輪全国大会・国際大会での実績", "ART SCREEN"]
     private var image = ["WS000027", "WS000028", "WS000029", "WS000030", "WS000032", "WS000033", "WS000031", "WS000034"]
@@ -39,7 +40,6 @@ class ArchiveViewController: UIViewController {
         tableView.dataSource = self
         tableView.backgroundColor = .white
         tableView.rowHeight = 70
-        
         view.addSubview(tableView)
         tableView.anchor(top: view.safeAreaLayoutGuide.topAnchor,
                          left: view.leftAnchor,

@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+// TODO: ヘルプボタン実装
 class MenuViewController: UIViewController {
     
     // MARK: - Properties
@@ -81,7 +81,6 @@ class MenuViewController: UIViewController {
         
         view.backgroundColor = .clear
         view.alpha = 1
-        
         btnArray = [button1, button2, button3, button4, button5, button6]
         for i in 0..<btnArray.count {
             btnArray[i].layer.cornerRadius = 20
@@ -120,7 +119,6 @@ class MenuViewController: UIViewController {
                      paddingTop: Width / 25,
                      paddingLeft: Width / 25,
                      paddingRight: Width / 25)
-        
         button5.alpha = 0.0
         button6.alpha = 0.0
         
