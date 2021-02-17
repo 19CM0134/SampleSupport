@@ -120,7 +120,8 @@ extension MainTabBarController: NFCNDEFReaderSessionDelegate {
         
         print("success")
         DispatchQueue.main.async {
-            let vc = DetailedWorksViewController()
+            let sb = UIStoryboard(name: "Main", bundle: nil)
+            let vc = sb.instantiateViewController(identifier: "detail") as! DetailedWorksViewController
             vc.setter(categoryName: "学生作品", artwork: "ART SCREEN", imageName: "WS000034")
             let nextvc = MainNavigationController(rootViewController: vc)
             nextvc.modalPresentationStyle = .fullScreen
@@ -139,7 +140,8 @@ extension MainTabBarController: NFCNDEFReaderSessionDelegate {
             dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "yyyy/MM/dd HH:mm", options: 0, locale: Locale(identifier: "ja_jp"))
             print("NFC読み込み時間\(dateFormatter.string(from: date))")
             
-            let vc = DetailedWorksViewController()
+            let sb = UIStoryboard(name: "Main", bundle: nil)
+            let vc = sb.instantiateViewController(identifier: "detail") as! DetailedWorksViewController
             vc.setter(categoryName: "学生作品", artwork: "ART SCREEN", imageName: "WS000034")
             let nextvc = MainNavigationController(rootViewController: vc)
             nextvc.modalPresentationStyle = .fullScreen
