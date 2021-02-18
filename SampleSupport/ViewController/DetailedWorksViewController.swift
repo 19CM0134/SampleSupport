@@ -13,18 +13,15 @@ class DetailedWorksViewController: UIViewController, UIScrollViewDelegate {
     
     private let WIDTH = UIScreen.main.bounds.width
     @IBOutlet weak var scrollView: UIScrollView!
-    var image: UIImage? = nil
-    var imageUrl: String = ""
-    var imageView = UIImageView()
+    private var imageView     = UIImageView()
+    private var catPresenter  : CategoryPresenter!
+    private var targetCategory: [CategoryModel] = []
+    private var worksPresenter: WorksPresenter!
+    private var targetWorks   : [WorksModel] = []
+    private var id: Int!
     
-    private var categoryName = "CategoryName"
-    private var artwork = "Artwork"
-    private var imageName = "WS000034"
-    
-    public func setter(categoryName: String, artwork: String, imageName: String) {
-        self.categoryName = categoryName
-        self.artwork = artwork
-        self.imageName = imageName
+    public func setter(id: Int) {
+        self.id = id
     }
     
     // MARK: - Init
@@ -41,16 +38,22 @@ class DetailedWorksViewController: UIViewController, UIScrollViewDelegate {
                           bottom: view.safeAreaLayoutGuide.bottomAnchor,
                           right: view.rightAnchor,
                           paddingTop: 88)
-        imageView.image = UIImage(named: imageName)
         scrollView.addSubview(imageView)
         self.imageView.backgroundColor = .white
         self.imageView.contentMode = .scaleAspectFit
+        
+        setupCategoryPresenter()
+        setupWorksPresenter()
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        setNavBar()
+        let workID: Int = id - 1
+        let catID = targetWorks[workID].categoryID - 1
+        setNavBar(category: targetCategory[catID].name,
+                  title: targetWorks[workID].name)
+        imageView.image = UIImage(named: targetWorks[workID].imageName)
         self.imageView.frame = CGRect(x: 0,
                                       y: 0,
                                       width: scrollView.frame.width,
@@ -59,8 +62,19 @@ class DetailedWorksViewController: UIViewController, UIScrollViewDelegate {
     
     // MARK: - Helpers
     
-    fileprivate func setNavBar() {
-            
+    fileprivate func setupCategoryPresenter() {
+        catPresenter = CategoryPresenter()
+        catPresenter.delegate = self
+        catPresenter.getCategoryList()
+    }
+    
+    fileprivate func setupWorksPresenter() {
+        worksPresenter = WorksPresenter()
+        worksPresenter.delegate = self
+        worksPresenter.getWorksList()
+    }
+    
+    fileprivate func setNavBar(category: String, title: String) {
         let label: UILabel = UILabel(frame: CGRect(x: 0, y: 0,
                                                    width: WIDTH - 110,
                                                    height: 50))
@@ -69,7 +83,7 @@ class DetailedWorksViewController: UIViewController, UIScrollViewDelegate {
         label.font = UIFont.boldSystemFont(ofSize: 16.0)
         label.textAlignment = .center
         label.textColor = .black
-        label.text = "\(categoryName)\n\(artwork)"
+        label.text = "\(category)\n\(title)"
         self.navigationItem.titleView = label
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "arrow_back_ios"),
                                                                 style: .plain,
@@ -81,13 +95,9 @@ class DetailedWorksViewController: UIViewController, UIScrollViewDelegate {
         return self.imageView
     }
     
-    func scrollViewDidZoom(_ scrollView: UIScrollView) {
-        // ズーム終了時の処理
-    }
+    func scrollViewDidZoom(_ scrollView: UIScrollView) {}
     
-    func scrollViewWillBeginZooming(_ scrollView: UIScrollView, with view: UIView?) {
-        // ズーム開始時の処理
-    }
+    func scrollViewWillBeginZooming(_ scrollView: UIScrollView, with view: UIView?) {}
     
     func zoomForScale(scale:CGFloat, center: CGPoint) -> CGRect{
         var zoomRect: CGRect = CGRect()
@@ -103,5 +113,21 @@ class DetailedWorksViewController: UIViewController, UIScrollViewDelegate {
     
     @objc func tappedBackBtn() {
         self.dismiss(animated: true, completion: nil)
+    }
+}
+
+// MARK: - CategoryPresenterDelegate
+
+extension DetailedWorksViewController: CategoryPresenterDelegate {
+    func setCategoryToScreen(_ category: [CategoryModel]) {
+        targetCategory = category
+    }
+}
+
+// MARK: - WorksPresenterDelegate
+
+extension DetailedWorksViewController: WorksPresenterDelegate {
+    func setWorksToScreen(_ works: [WorksModel]) {
+        targetWorks = works
     }
 }

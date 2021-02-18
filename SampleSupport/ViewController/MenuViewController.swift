@@ -78,18 +78,17 @@ class MenuViewController: UIViewController {
     // MARK: - Helpers
     
     fileprivate func recognitionUI() {
-        
         view.backgroundColor = .clear
         view.alpha = 1
         btnArray = [button1, button2, button3, button4, button5, button6]
         for i in 0..<btnArray.count {
             btnArray[i].layer.cornerRadius = 20
             btnArray[i].setTitleColor(.black, for: .normal)
+            btnArray[i].titleLabel?.font = UIFont.boldSystemFont(ofSize: 22)
             btnArray[i].backgroundColor = .white
             btnArray[i].tag = i
             btnArray[i].addTarget(self, action: #selector(tappedBtn(sender:)), for: .touchUpInside)
         }
-        
         let stack = UIStackView(arrangedSubviews: [button1, button2, button3])
         view.addSubview(stack)
         stack.axis = .horizontal
@@ -104,7 +103,6 @@ class MenuViewController: UIViewController {
                      paddingTop: Height / 3,
                      paddingLeft: Width / 25,
                      paddingRight: Width / 25)
-        
         let stack2 = UIStackView(arrangedSubviews: [button4, button5, button6])
         view.addSubview(stack2)
         stack2.axis = .horizontal
@@ -121,7 +119,6 @@ class MenuViewController: UIViewController {
                      paddingRight: Width / 25)
         button5.alpha = 0.0
         button6.alpha = 0.0
-        
         view.addSubview(backButton)
         backButton.setDimensions(width: 40, height: 40)
         backButton.anchor(left: view.leftAnchor,
@@ -134,23 +131,27 @@ class MenuViewController: UIViewController {
     
     @objc func tappedBtn(sender: UIButton) {
         if sender.tag == 0 {
-            print("tapped 設定")
             let vc = SettingViewController()
             present(vc, animated: true, completion: nil)
         } else if sender.tag == 1 {
-            print("tapped 履歴")
-            let vc = ArchiveViewController()
-            present(vc, animated: true, completion: nil)
+            if UserDefaults.standard.dictionary(forKey: "archive") != nil {
+                let vc = ArchiveViewController()
+                present(vc, animated: true, completion: nil)
+            } else {
+                let alertController = UIAlertController(title: "履歴がありません",
+                                                        message: "タグを読み込んでください",
+                                                        preferredStyle: .alert)
+                alertController.addAction(UIAlertAction(title: "OK",
+                                                        style: .default,
+                                                        handler: nil))
+                present(alertController, animated: true, completion: nil)
+            }
         } else if sender.tag == 2 {
-            print("tapped アンケート")
-            
             let url = URL(string: "https://forms.gle/L6pjycxa5esnwKcq9")!
             if UIApplication.shared.canOpenURL(url) {
                 UIApplication.shared.open(url)
             }
-            
         } else if sender.tag == 3 {
-            print("tapped ヘルプ")
             let alertController = UIAlertController(title: "ヘルプボタンが押されました",
                                                     message: "このボタンは未実装のヘルプ画面に遷移するためのボタンです", preferredStyle: .alert)
             alertController.addAction(UIAlertAction(title: "OK",
@@ -163,7 +164,6 @@ class MenuViewController: UIViewController {
     }
     
     @objc func tappedBackBtn() {
-        print("tapped Back Button")
         self.dismiss(animated: true, completion: nil)
     }
 }

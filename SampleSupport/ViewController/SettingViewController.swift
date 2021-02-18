@@ -12,7 +12,7 @@ class SettingViewController: UIViewController {
     
     // MARK: -  Properties
     
-    private let category = ["何か"]
+    private let category = ["履歴の削除"]
     private let WIDTH = UIScreen.main.bounds.width
 
     private let titleLabel: UILabel = {
@@ -20,7 +20,7 @@ class SettingViewController: UIViewController {
         label.font = UIFont.boldSystemFont(ofSize: 26)
         label.textColor = .black
         label.text = "設定"
-        label.textAlignment = .center
+        label.textAlignment = .left
         label.setDimensions(width: 100, height: 50)
 
         return label
@@ -59,8 +59,8 @@ class SettingViewController: UIViewController {
         view.addSubview(titleLabel)
         titleLabel.anchor(top: view.safeAreaLayoutGuide.topAnchor,
                           left: view.leftAnchor,
-                          paddingTop: 15,
-                          paddingLeft: WIDTH / 2 - 50)
+                          paddingTop: 20,
+                          paddingLeft: 15)
         
         let stack = UIStackView(arrangedSubviews: [categoryName, swichBtn])
         view.addSubview(stack)
@@ -83,7 +83,30 @@ class SettingViewController: UIViewController {
     @objc func changeSwitch(sender: UISwitch) {
         
         if sender.isOn {
-            print("switch on")
+            let alertController = UIAlertController(title: "履歴を削除します",
+                                                    message: "本当によろしいですか？",
+                                                    preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "OK",
+                                                    style: .default,
+                                                    handler: {_ in
+                                                        UserDefaults.standard.removeObject(forKey: "archive")
+                                                        UserDefaults.standard.removeObject(forKey: "id")
+                                                        let dialog = UIAlertController(title: "削除しました",
+                                                                                       message: "",
+                                                                                       preferredStyle: .alert)
+                                                        dialog.addAction(UIAlertAction(title: "OK",
+                                                                                       style: .default,
+                                                                                       handler: {_ in
+                                                                                        self.swichBtn.isOn = false
+                                                                                       }))
+                                                        self.present(dialog, animated: true, completion: nil)
+                                                    }))
+            alertController.addAction(UIAlertAction(title: "NO",
+                                                    style: .cancel,
+                                                    handler: {_ in
+                                                        self.swichBtn.isOn = false
+                                                    }))
+            present(alertController, animated: true, completion: nil)
         } else {
             print("switch off")
         }

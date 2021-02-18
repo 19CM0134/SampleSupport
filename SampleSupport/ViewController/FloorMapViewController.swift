@@ -13,9 +13,9 @@ class FloorMapViewController: UIViewController, UIScrollViewDelegate {
     
     @IBOutlet weak private var menuBtn: UIButton!
     @IBOutlet weak var scrollView: UIScrollView!
-    var image: UIImage? = nil
-    var imageUrl: String = ""
-    var imageView = UIImageView()
+    private var imageView = UIImageView()
+    private var presenter: ExhibitionPresenter!
+    private var targetExhibition: [ExhibitionModel] = []
     
     // MARK: - Init
     
@@ -33,22 +33,18 @@ class FloorMapViewController: UIViewController, UIScrollViewDelegate {
                           paddingTop: 88,
                           paddingBottom: 83)
         scrollView.backgroundColor = .white
-        imageView.image = UIImage(named: "mapImage")
         scrollView.addSubview(imageView)
         self.imageView.backgroundColor = .white
         self.imageView.contentMode = .scaleAspectFit
 
+        setupExhibitionPresenter()
         recognitionUI()
-    }
-    
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-        
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
+        imageView.image = UIImage(named: targetExhibition[0].mapImage)
         self.imageView.frame = CGRect(x: 0,
                                       y: 0,
                                       width: scrollView.bounds.width,
@@ -57,8 +53,13 @@ class FloorMapViewController: UIViewController, UIScrollViewDelegate {
     
     // MARK: - Helpers
     
+    fileprivate func setupExhibitionPresenter() {
+        presenter = ExhibitionPresenter()
+        presenter.delegate = self
+        presenter.getExhibitionInfo()
+    }
+    
     fileprivate func recognitionUI() {
-        
         menuBtn.setImage(UIImage(systemName: "ellipsis"), for: .normal)
         menuBtn.tintColor = .black
         menuBtn.addTarget(self, action: #selector(tappedMenuBtn), for: .touchUpInside)
@@ -89,8 +90,15 @@ class FloorMapViewController: UIViewController, UIScrollViewDelegate {
     // MARK: - Selecters
     
     @objc func tappedMenuBtn() {
-        print("Select Menu Button From FloorMapViewController")
         let vc = MenuViewController()
         self.present(vc, animated: true, completion: nil)
+    }
+}
+
+// MARK: - ExhibitionPresenterDelegate
+
+extension FloorMapViewController: ExhibitionPresenterDelegate {
+    func setExhibitionToScreen(_ exhibition: [ExhibitionModel]) {
+        targetExhibition = exhibition
     }
 }

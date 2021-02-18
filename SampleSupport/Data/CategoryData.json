@@ -1,0 +1,30 @@
+[
+    {
+        "categoryID": 1,
+        "categoryName": "産学連携"
+    },
+    {
+        "categoryID": 2,
+        "categoryName": "オリジナル教材"
+    },
+    {
+        "categoryID": 3,
+        "categoryName": "学生作品"
+    },
+    {
+        "categoryID": 4,
+        "categoryName": "教員の創作活動"
+    },
+    {
+        "categoryID": 5,
+        "categoryName": "コンテスト・競技大会"
+    },
+    {
+        "categoryID": 6,
+        "categoryName": "学科横断取組み"
+    },
+    {
+        "categoryID": 7,
+        "categoryName": "キャリア教育"
+    }
+]

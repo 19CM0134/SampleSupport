@@ -11,6 +11,9 @@ class ArchiveHeader: UIView {
     
     // MARK: - Properties
     
+    private var presenter: ExhibitionPresenter!
+    private var targetExhibition: [ExhibitionModel] = []
+    
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 26)
@@ -24,7 +27,6 @@ class ArchiveHeader: UIView {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 17.5)
         label.textColor = .black
-        label.text = "電子学園 創立70周年記念 『感謝。そして挑戦』"
         
         return label
     }()
@@ -40,15 +42,37 @@ class ArchiveHeader: UIView {
                           left: leftAnchor,
                           paddingTop: 20,
                           paddingLeft: 15)
-        
         addSubview(exhibitionTitle)
         exhibitionTitle.anchor(top: titleLabel.bottomAnchor,
                              left: leftAnchor,
                              paddingTop: 10,
                              paddingLeft: 15)
+        setupExhibitionPresenter()
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        exhibitionTitle.text = targetExhibition[0].name
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Helpers
+    
+    fileprivate func setupExhibitionPresenter() {
+        presenter = ExhibitionPresenter()
+        presenter.delegate = self
+        presenter.getExhibitionInfo()
+    }
+}
+
+// MARK: - ExhibitionPresenterDelegate
+
+extension ArchiveHeader: ExhibitionPresenterDelegate {
+    func setExhibitionToScreen(_ exhibition: [ExhibitionModel]) {
+        targetExhibition = exhibition
     }
 }

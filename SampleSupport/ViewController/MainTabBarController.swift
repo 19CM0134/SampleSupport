@@ -7,12 +7,23 @@
 
 import UIKit
 import CoreNFC
-// TODO: NFCタグからパネルのIDを取得する
+
+enum State {
+    case standBy
+    case read
+    case write
+}
+
 class MainTabBarController: UITabBarController {
     
     // MARK: - Properties
     
-    var session: NFCNDEFReaderSession?
+    private var session: NFCNDEFReaderSession?
+    private var message: NFCNDEFMessage?
+    private var state  : State = .standBy
+    private var id     : Int!
+    private var archive: [String : String] = [:]
+    private var storage: [Int] = []
     
     private var button: UIButton = {
         let btn = UIButton()
@@ -37,7 +48,6 @@ class MainTabBarController: UITabBarController {
     
     fileprivate func setBtn() {
         view.addSubview(button)
-
         button.setDimensions(width: 50 , height: 50)
         button.anchor(top: tabBar.topAnchor,
                       left: tabBar.leftAnchor,
@@ -48,7 +58,8 @@ class MainTabBarController: UITabBarController {
         button.layer.borderWidth = 1.0
     }
         
-    fileprivate func showNFC() {
+    fileprivate func startSession(state: State) {
+        self.state = state
         guard NFCNDEFReaderSession.readingAvailable else {
             let alertController = UIAlertController(
                 title: "サポートされていません",
@@ -59,17 +70,87 @@ class MainTabBarController: UITabBarController {
             self.present(alertController, animated: true, completion: nil)
             return
         }
-
         session = NFCNDEFReaderSession(delegate: self, queue: nil, invalidateAfterFirstRead: false)
         session?.alertMessage = "タグを端末上部に近づけてください"
         session?.begin()
     }
     
+    func stopSession(alert: String = "", error: String = "") {
+        session?.alertMessage = alert
+        if error.isEmpty {
+            session?.invalidate()
+        } else {
+            session?.invalidate(errorMessage: error)
+        }
+        self.state = .standBy
+    }
+    
+    func tagRemovalDetect(_ tag: NFCNDEFTag) {
+        session?.connect(to: tag) { (error: Error?) in
+            if error != nil || !tag.isAvailable {
+                self.session?.restartPolling()
+                return
+            }
+            DispatchQueue.global().asyncAfter(deadline: DispatchTime.now() + .milliseconds(500), execute: {
+                self.tagRemovalDetect(tag)
+            })
+        }
+    }
+    
+    func updateMessage(_ message: NFCNDEFMessage) -> Bool {
+        if message.records.isEmpty { return false }
+        var results = [String]()
+        for record in message.records {
+            if let type = String(data: record.type, encoding: .utf8) {
+                if type == "T" { //データ形式がテキストならば
+                    let res = record.wellKnownTypeTextPayload()
+                    if let text = res.0 {
+                        results.append(text)
+                    }
+                } else if type == "U" { //データ形式がURLならば
+                    let res = record.wellKnownTypeURIPayload()
+                    if let url = res {
+                        results.append("url: \(url)")
+                    }
+                }
+            }
+        }
+        stopSession(alert: "読み込み成功")
+        id = Int(String(results.first!))!
+        if storage.isEmpty {
+            storage.append(id)
+        } else {
+            let ans = storage.filter{$0 == id}
+            if ans == [] {
+                storage.append(id)
+            }
+        }
+        storage.sort()
+        UserDefaults.standard.set(storage, forKey: "id")
+        print("読み込みID: \(id!)")
+        // 時間取得
+        let date = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "yyyy/MM/dd HH:mm", options: 0, locale: Locale(identifier: "ja_jp"))
+        print("NFC読み込み時間\(dateFormatter.string(from: date))")
+        // 辞書型配列に[id : 日時]を入れる
+        archive[String(results.first!)] = dateFormatter.string(from: date)
+        UserDefaults.standard.set(archive, forKey: "archive")
+        DispatchQueue.main.async {
+            let sb = UIStoryboard(name: "Main", bundle: nil)
+            let vc = sb.instantiateViewController(identifier: "detail") as! DetailedWorksViewController
+            vc.setter(id: self.id)
+            let nextvc = MainNavigationController(rootViewController: vc)
+            nextvc.modalPresentationStyle = .fullScreen
+            self.present(nextvc, animated: true, completion: nil)
+        }
+        return true
+    }
+    
     // MARK: - Selecters
     
     @objc func tappedBtn() {
-        print("tapped Button")
-        showNFC()
+        startSession(state: .read)
     }
 }
 
@@ -88,65 +169,59 @@ extension MainTabBarController: NFCNDEFReaderSessionDelegate {
         // Check the invalidation reason from the returned error.
         if let readerError = error as? NFCReaderError {
             
-            // Show an alert when the invalidation reason is not because of a
-            // successful read during a single-tag read session, or because the
-            // user canceled a multiple-tag read session from the UI or
-            // programmatically using the invalidate method call.
-            if (readerError.code != .readerSessionInvalidationErrorFirstNDEFTagRead)
-                && (readerError.code != .readerSessionInvalidationErrorUserCanceled) {
+            if readerError.code == .readerSessionInvalidationErrorSessionTimeout {
                 let alertController = UIAlertController(
-                    title: "Session Invalidated",
-                    message: error.localizedDescription,
+                    title: "セッションが無効になりました",
+                    message: "タイムアウトです\nもう一度お試しください",
                     preferredStyle: .alert
                 )
                 alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                 DispatchQueue.main.async {
                     self.present(alertController, animated: true, completion: nil)
                 }
-            } else if readerError.code == .readerSessionInvalidationErrorSessionTimeout {
-                // タイムアウト
-            } else if readerError.code == .readerSessionInvalidationErrorUserCanceled {
-                print(".readerSessionInvalidationErrorUserCanceled: \(readerError.code)")
-                // キャンセル
             }
         }
-
         // To read new tags, a new session instance is required.
         self.session = nil
     }
     
     /// - Tag: processingTagData
     func readerSession(_ session: NFCNDEFReaderSession, didDetectNDEFs messages: [NFCNDEFMessage]) {
-        
-        print("success")
-        DispatchQueue.main.async {
-            let sb = UIStoryboard(name: "Main", bundle: nil)
-            let vc = sb.instantiateViewController(identifier: "detail") as! DetailedWorksViewController
-            vc.setter(categoryName: "学生作品", artwork: "ART SCREEN", imageName: "panel12")
-            let nextvc = MainNavigationController(rootViewController: vc)
-            nextvc.modalPresentationStyle = .fullScreen
-            self.present(nextvc, animated: true, completion: nil)
-        }
+        // Not Called
     }
     
     /// - Tag: processingNDEFTag
     func readerSession(_ session: NFCNDEFReaderSession, didDetect tags: [NFCNDEFTag]) {
         
-        print("didDetect")
-        DispatchQueue.main.async {
-            // 時間取得
-            let date = Date()
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "yyyy/MM/dd HH:mm", options: 0, locale: Locale(identifier: "ja_jp"))
-            print("NFC読み込み時間\(dateFormatter.string(from: date))")
-            
-            let sb = UIStoryboard(name: "Main", bundle: nil)
-            let vc = sb.instantiateViewController(identifier: "detail") as! DetailedWorksViewController
-            vc.setter(categoryName: "学生作品", artwork: "ART SCREEN", imageName: "panel12")
-            let nextvc = MainNavigationController(rootViewController: vc)
-            nextvc.modalPresentationStyle = .fullScreen
-            self.present(nextvc, animated: true, completion: nil)
+        if tags.count > 1 {
+            session.alertMessage = "読み込ませるNFCタグは1枚にしてください"
+            tagRemovalDetect(tags.first!)
+            return
         }
-        session.invalidate()
+        let tag = tags.first!
+        session.connect(to: tag) { (error) in
+            if error != nil {
+                session.restartPolling()
+                return
+            }
+        }
+        
+        tag.queryNDEFStatus { (status, capacity, error) in
+            if status == .notSupported {
+                self.stopSession(error: "このNFCタグは対応していません")
+                return
+            }
+            if self.state == .read {
+                tag.readNDEF { (message, error) in
+                    if error != nil || message == nil {
+                        self.stopSession(error: error!.localizedDescription)
+                        return
+                    }
+                    if !self.updateMessage(message!) {
+                        self.stopSession(error: "このNFCタグは対応していません")
+                    }
+                }
+            }
+        }
     }
 }

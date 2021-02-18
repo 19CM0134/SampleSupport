@@ -1,0 +1,177 @@
+[
+    {
+        "worksID": 1,
+        "categoryID": 1,
+        "worksName": "NINJA THE MONSTER",
+        "imageName": "panel01.pdf",
+        "exhibitionID": 1
+    },
+    {
+        "worksID": 2,
+        "categoryID": 1,
+        "worksName": "進級制作における産学連携授業",
+        "imageName": "panel02.pdf",
+        "exhibitionID": 1
+    },
+    {
+        "worksID": 3,
+        "categoryID": 1,
+        "worksName": "WADJET",
+        "imageName": "panel03.pdf",
+        "exhibitionID": 1
+    },
+    {
+        "worksID": 4,
+        "categoryID": 1,
+        "worksName": "CTFによる総合演習教材",
+        "imageName": "panel04.pdf",
+        "exhibitionID": 1
+    },
+    {
+        "worksID": 5,
+        "categoryID": 1,
+        "worksName": "Webook",
+        "imageName": "panel05.pdf",
+        "exhibitionID": 1
+    },
+    {
+        "worksID": 6,
+        "categoryID": 1,
+        "worksName": "夢絵システム",
+        "imageName": "panel06.pdf",
+        "exhibitionID": 1
+    },
+    {
+        "worksID": 7,
+        "categoryID": 1,
+        "worksName": "Lusola",
+        "imageName": "panel07.pdf",
+        "exhibitionID": 1
+    },
+    {
+        "worksID": 8,
+        "categoryID": 2,
+        "worksName": "オリジナル教材",
+        "imageName": "panel08.pdf",
+        "exhibitionID": 1
+    },
+    {
+        "worksID": 9,
+        "categoryID": 3,
+        "worksName": "AIMRACING",
+        "imageName": "panel09.pdf",
+        "exhibitionID": 1
+    },
+    {
+        "worksID": 10,
+        "categoryID": 3,
+        "worksName": "CUBEATS",
+        "imageName": "panel10.pdf",
+        "exhibitionID": 1
+    },
+    {
+        "worksID": 11,
+        "categoryID": 3,
+        "worksName": "学生映像作品の上映",
+        "imageName": "panel11.pdf",
+        "exhibitionID": 1
+    },
+    {
+        "worksID": 12,
+        "categoryID": 3,
+        "worksName": "ART SCREEN",
+        "imageName": "panel12.pdf",
+        "exhibitionID": 1
+    },
+    {
+        "worksID": 13,
+        "categoryID": 3,
+        "worksName": "テスラコイルによる音楽演奏",
+        "imageName": "panel13.pdf",
+        "exhibitionID": 1
+    },
+    {
+        "worksID": 14,
+        "categoryID": 3,
+        "worksName": "辛いシシトウの特徴分析と仕分け機の開発",
+        "imageName": "panel14.pdf",
+        "exhibitionID": 1
+    },
+    {
+        "worksID": 15,
+        "categoryID": 4,
+        "worksName": "かりきゅらすかい",
+        "imageName": "panel15.pdf",
+        "exhibitionID": 1
+    },
+    {
+        "worksID": 16,
+        "categoryID": 5,
+        "worksName": "技能五輪全国・国際大会実績",
+        "imageName": "panel16.pdf",
+        "exhibitionID": 1
+    },
+    {
+        "worksID": 17,
+        "categoryID": 6,
+        "worksName": "インサニア",
+        "imageName": "panel17.pdf",
+        "exhibitionID": 1
+    },
+    {
+        "worksID": 18,
+        "categoryID": 6,
+        "worksName": "ブラインド＆ソード",
+        "imageName": "panel18.pdf",
+        "exhibitionID": 1
+    },
+    {
+        "worksID": 19,
+        "categoryID": 6,
+        "worksName": "学ラボー",
+        "imageName": "panel19.pdf",
+        "exhibitionID": 1
+    },
+    {
+        "worksID": 20,
+        "categoryID": 6,
+        "worksName": "プログラムコンテストへの取組み",
+        "imageName": "panel20.pdf",
+        "exhibitionID": 1
+    },
+    {
+        "worksID": 21,
+        "categoryID": 7,
+        "worksName": "キャリアサポーター",
+        "imageName": "panel21.pdf",
+        "exhibitionID": 1
+    },
+    {
+        "worksID": 22,
+        "categoryID": 7,
+        "worksName": "留学生サポート",
+        "imageName": "panel22.pdf",
+        "exhibitionID": 1
+    },
+    {
+        "worksID": 23,
+        "categoryID": 7,
+        "worksName": "学生自治会・地域貢献活動",
+        "imageName": "panel23.pdf",
+        "exhibitionID": 1
+    },
+    {
+        "worksID": 24,
+        "categoryID": 7,
+        "worksName": "スポーツフェスティバル",
+        "imageName": "panel24.pdf",
+        "exhibitionID": 1
+    },
+    {
+        "worksID": 25,
+        "categoryID": 7,
+        "worksName": "日専祭（学園祭）",
+        "imageName": "panel25.pdf",
+        "exhibitionID": 1
+    }
+]
