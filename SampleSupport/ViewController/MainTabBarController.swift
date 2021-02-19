@@ -127,13 +127,10 @@ class MainTabBarController: UITabBarController {
         }
         storage.sort()
         UserDefaults.standard.set(storage, forKey: "id")
-        print("読み込みID: \(id!)")
         // 時間取得
         let date = Date()
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "yyyy/MM/dd HH:mm", options: 0, locale: Locale(identifier: "ja_jp"))
-        print("NFC読み込み時間\(dateFormatter.string(from: date))")
-        // 辞書型配列に[id : 日時]を入れる
         archive[String(results.first!)] = dateFormatter.string(from: date)
         UserDefaults.standard.set(archive, forKey: "archive")
         DispatchQueue.main.async {
@@ -163,8 +160,6 @@ extension MainTabBarController: NFCNDEFReaderSessionDelegate {
 
     /// - Tag: endScanning
     func readerSession(_ session: NFCNDEFReaderSession, didInvalidateWithError error: Error) {
-
-        print("error: \(error.localizedDescription)")
         
         // Check the invalidation reason from the returned error.
         if let readerError = error as? NFCReaderError {

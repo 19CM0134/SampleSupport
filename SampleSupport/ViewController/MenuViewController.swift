@@ -6,7 +6,7 @@
 //
 
 import UIKit
-// TODO: ヘルプボタン実装
+
 class MenuViewController: UIViewController {
     
     // MARK: - Properties
@@ -39,34 +39,6 @@ class MenuViewController: UIViewController {
         return btn
     }()
     
-    private var button3: UIButton = {
-       let btn = UIButton()
-        btn.setTitle("アンケート", for: .normal)
-        
-        return btn
-    }()
-    
-    private var button4: UIButton = {
-        let btn = UIButton()
-        btn.setTitle("ヘルプ", for: .normal)
-        
-        return btn
-    }()
-    
-    private var button5: UIButton = {
-        let btn = UIButton()
-        btn.setTitle("button5", for: .normal)
-        
-        return btn
-    }()
-    
-    private var button6: UIButton = {
-        let btn = UIButton()
-        btn.setTitle("button6", for: .normal)
-        
-        return btn
-    }()
-    
     // MARK: - Init
     
     override func viewDidLoad() {
@@ -80,45 +52,31 @@ class MenuViewController: UIViewController {
     fileprivate func recognitionUI() {
         view.backgroundColor = .clear
         view.alpha = 1
-        btnArray = [button1, button2, button3, button4, button5, button6]
+        btnArray = [button1, button2]
         for i in 0..<btnArray.count {
             btnArray[i].layer.cornerRadius = 20
             btnArray[i].setTitleColor(.black, for: .normal)
-            btnArray[i].titleLabel?.font = UIFont.boldSystemFont(ofSize: 22)
+            btnArray[i].titleLabel?.font = UIFont.boldSystemFont(ofSize: 26)
             btnArray[i].backgroundColor = .white
             btnArray[i].tag = i
             btnArray[i].addTarget(self, action: #selector(tappedBtn(sender:)), for: .touchUpInside)
         }
-        let stack = UIStackView(arrangedSubviews: [button1, button2, button3])
+        let stack = UIStackView(arrangedSubviews: [button1, button2])
         view.addSubview(stack)
         stack.axis = .horizontal
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.distribution = .fillEqually
         stack.alignment = .fill
-        stack.spacing = Width / 25
-        stack.setDimensions(width: Width - 30, height: (Width - 60) / 3)
+        stack.spacing = Width / 15
+        let pad = (Width / 15) * 2
+        let space = (Width / 15) * 3
+        stack.setDimensions(width: Width - pad, height: (Width - space) / 2)
         stack.anchor(top: view.topAnchor,
                      left: view.leftAnchor,
                      right: view.rightAnchor,
                      paddingTop: Height / 3,
-                     paddingLeft: Width / 25,
-                     paddingRight: Width / 25)
-        let stack2 = UIStackView(arrangedSubviews: [button4, button5, button6])
-        view.addSubview(stack2)
-        stack2.axis = .horizontal
-        stack2.translatesAutoresizingMaskIntoConstraints = false
-        stack2.distribution = .fillEqually
-        stack2.alignment = .fill
-        stack2.spacing = Width / 25
-        stack2.setDimensions(width: Width - 30, height: (Width - 60) / 3)
-        stack2.anchor(top: stack.bottomAnchor,
-                     left: view.leftAnchor,
-                     right: view.rightAnchor,
-                     paddingTop: Width / 25,
-                     paddingLeft: Width / 25,
-                     paddingRight: Width / 25)
-        button5.alpha = 0.0
-        button6.alpha = 0.0
+                     paddingLeft: Width / 15,
+                     paddingRight: Width / 15)
         view.addSubview(backButton)
         backButton.setDimensions(width: 40, height: 40)
         backButton.anchor(left: view.leftAnchor,
@@ -146,18 +104,6 @@ class MenuViewController: UIViewController {
                                                         handler: nil))
                 present(alertController, animated: true, completion: nil)
             }
-        } else if sender.tag == 2 {
-            let url = URL(string: "https://forms.gle/L6pjycxa5esnwKcq9")!
-            if UIApplication.shared.canOpenURL(url) {
-                UIApplication.shared.open(url)
-            }
-        } else if sender.tag == 3 {
-            let alertController = UIAlertController(title: "ヘルプボタンが押されました",
-                                                    message: "このボタンは未実装のヘルプ画面に遷移するためのボタンです", preferredStyle: .alert)
-            alertController.addAction(UIAlertAction(title: "OK",
-                                                    style: .default,
-                                                    handler: nil))
-            present(alertController, animated: true, completion: nil)
         } else {
             print("No sender tag number")
         }
