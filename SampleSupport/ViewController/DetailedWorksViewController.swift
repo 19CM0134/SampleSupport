@@ -14,9 +14,9 @@ class DetailedWorksViewController: UIViewController, UIScrollViewDelegate {
     private let WIDTH = UIScreen.main.bounds.width
     @IBOutlet weak var scrollView: UIScrollView!
     private var imageView     = UIImageView()
-    private var catPresenter  : CategoryPresenter!
+//    private var catPresenter  : CategoryPresenter!
     private var targetCategory: [CategoryModel] = []
-    private var worksPresenter: WorksPresenter!
+//    private var worksPresenter: WorksPresenter!
     private var targetWorks   : [WorksModel] = []
     private var id: Int!
     
@@ -42,8 +42,9 @@ class DetailedWorksViewController: UIViewController, UIScrollViewDelegate {
         self.imageView.backgroundColor = .white
         self.imageView.contentMode = .scaleAspectFit
         
-        setupCategoryPresenter()
-        setupWorksPresenter()
+//        setupCategoryPresenter()
+//        setupWorksPresenter()
+        setupFileManeger()
     }
     
     override func viewDidLayoutSubviews() {
@@ -51,8 +52,8 @@ class DetailedWorksViewController: UIViewController, UIScrollViewDelegate {
         
         let workID: Int = id - 1
         let catID = targetWorks[workID].categoryID - 1
-        setNavBar(category: targetCategory[catID].name,
-                  title: targetWorks[workID].name)
+        setNavBar(category: targetCategory[catID].categoryName,
+                  title: targetWorks[workID].worksName)
         imageView.image = UIImage(named: targetWorks[workID].imageName)
         self.imageView.frame = CGRect(x: 0,
                                       y: 0,
@@ -62,16 +63,42 @@ class DetailedWorksViewController: UIViewController, UIScrollViewDelegate {
     
     // MARK: - Helpers
     
-    fileprivate func setupCategoryPresenter() {
-        catPresenter = CategoryPresenter()
-        catPresenter.delegate = self
-        catPresenter.getCategoryList()
-    }
+//    fileprivate func setupCategoryPresenter() {
+//        catPresenter = CategoryPresenter()
+//        catPresenter.delegate = self
+//        catPresenter.getCategoryList()
+//    }
     
-    fileprivate func setupWorksPresenter() {
-        worksPresenter = WorksPresenter()
-        worksPresenter.delegate = self
-        worksPresenter.getWorksList()
+//    fileprivate func setupWorksPresenter() {
+//        worksPresenter = WorksPresenter()
+//        worksPresenter.delegate = self
+//        worksPresenter.getWorksList()
+//    }
+    
+    fileprivate func setupFileManeger() {
+        guard let url = try? FileManager.default.url(for: .documentDirectory,
+                                                     in: .userDomainMask,
+                                                     appropriateFor: nil,
+                                                     create: false)
+                .appendingPathComponent("category.json") else {return}
+        do {
+            let data = try Data(contentsOf: url)
+            self.targetCategory = try JSONDecoder().decode([CategoryModel].self, from: data)
+        } catch {
+            print(error)
+        }
+        
+        guard let worksURL = try? FileManager.default.url(for: .documentDirectory,
+                                                     in: .userDomainMask,
+                                                     appropriateFor: nil,
+                                                     create: false)
+                .appendingPathComponent("works.json") else {return}
+        do {
+            let data = try Data(contentsOf: worksURL)
+            self.targetWorks = try JSONDecoder().decode([WorksModel].self, from: data)
+        } catch {
+            print(error)
+        }
     }
     
     fileprivate func setNavBar(category: String, title: String) {
@@ -118,16 +145,16 @@ class DetailedWorksViewController: UIViewController, UIScrollViewDelegate {
 
 // MARK: - CategoryPresenterDelegate
 
-extension DetailedWorksViewController: CategoryPresenterDelegate {
-    func setCategoryToScreen(_ category: [CategoryModel]) {
-        targetCategory = category
-    }
-}
+//extension DetailedWorksViewController: CategoryPresenterDelegate {
+//    func setCategoryToScreen(_ category: [CategoryModel]) {
+//        targetCategory = category
+//    }
+//}
 
 // MARK: - WorksPresenterDelegate
 
-extension DetailedWorksViewController: WorksPresenterDelegate {
-    func setWorksToScreen(_ works: [WorksModel]) {
-        targetWorks = works
-    }
-}
+//extension DetailedWorksViewController: WorksPresenterDelegate {
+//    func setWorksToScreen(_ works: [WorksModel]) {
+//        targetWorks = works
+//    }
+//}

@@ -11,7 +11,7 @@ class ArchiveHeader: UIView {
     
     // MARK: - Properties
     
-    private var presenter: ExhibitionPresenter!
+//    private var presenter: ExhibitionPresenter!
     private var targetExhibition: [ExhibitionModel] = []
     
     private let titleLabel: UILabel = {
@@ -47,13 +47,14 @@ class ArchiveHeader: UIView {
                              left: leftAnchor,
                              paddingTop: 10,
                              paddingLeft: 15)
-        setupExhibitionPresenter()
+//        setupExhibitionPresenter()
+        setupFileManeger()
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        exhibitionTitle.text = targetExhibition[0].name
+        exhibitionTitle.text = targetExhibition[0].exhibitionName
     }
     
     required init?(coder: NSCoder) {
@@ -62,17 +63,33 @@ class ArchiveHeader: UIView {
     
     // MARK: - Helpers
     
-    fileprivate func setupExhibitionPresenter() {
-        presenter = ExhibitionPresenter()
-        presenter.delegate = self
-        presenter.getExhibitionInfo()
+//    fileprivate func setupExhibitionPresenter() {
+//        presenter = ExhibitionPresenter()
+//        presenter.delegate = self
+//        presenter.getExhibitionInfo()
+//    }
+    
+    fileprivate func setupFileManeger() {
+        guard let url = try? FileManager.default.url(for: .documentDirectory,
+                                                     in: .userDomainMask,
+                                                     appropriateFor: nil,
+                                                     create: false)
+                .appendingPathComponent("exhibition.json") else {return}
+        do {
+            let data = try Data(contentsOf: url)
+            print(String(data: data, encoding: .utf8)!)
+            self.targetExhibition = try JSONDecoder().decode([ExhibitionModel].self, from: data)
+            print(self.targetExhibition)
+        } catch {
+            print(error)
+        }
     }
 }
 
 // MARK: - ExhibitionPresenterDelegate
 
-extension ArchiveHeader: ExhibitionPresenterDelegate {
-    func setExhibitionToScreen(_ exhibition: [ExhibitionModel]) {
-        targetExhibition = exhibition
-    }
-}
+//extension ArchiveHeader: ExhibitionPresenterDelegate {
+//    func setExhibitionToScreen(_ exhibition: [ExhibitionModel]) {
+//        targetExhibition = exhibition
+//    }
+//}

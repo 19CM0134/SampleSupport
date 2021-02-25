@@ -8,14 +8,14 @@
 import UIKit
 
 // JSONから生成
-struct CategoryModel: Decodable {
+struct CategoryModel: Codable {
     
-    let id: Int
-    let name: String
+    let categoryID: Int
+    let categoryName: String
     
     private enum Keys: String, CodingKey {
-        case id = "categoryID"
-        case name = "categoryName"
+        case categoryID = "categoryID"
+        case categoryName = "categoryName"
     }
     
     // MARK: - Init
@@ -23,7 +23,7 @@ struct CategoryModel: Decodable {
         
         let container = try decoder.container(keyedBy: Keys.self)
         
-        self.id = try container.decode(Int.self, forKey: .id)
-        self.name = try container.decode(String.self, forKey: .name)
+        self.categoryID = try container.decode(Int.self, forKey: .categoryID)
+        self.categoryName = try container.decode(String.self, forKey: .categoryName)
     }
 }

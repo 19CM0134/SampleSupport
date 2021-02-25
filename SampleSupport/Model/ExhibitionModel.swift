@@ -8,28 +8,29 @@
 import UIKit
 
 // JSONから生成
-struct ExhibitionModel: Decodable {
+struct ExhibitionModel: Codable {
     
-    let id: Int
-    let name: String
-    let topImage: String
-    let mapImage: String
+    let exhibitionID: Int
+    let exhibitionName: String
+    let exhibitionTopImage: String
+    let exhibitionMapImage: String
     
     private enum Keys: String, CodingKey {
-        case id = "exhibitionID"
-        case name = "exhibitionName"
-        case topImage = "exhibitionTopImage"
-        case mapImage = "exhibitionMapImage"
+        case exhibitionID = "exhibitionID"
+        case exhibitionName = "exhibitionName"
+        case exhibitionTopImage = "exhibitionTopImage"
+        case exhibitionMapImage = "exhibitionMapImage"
     }
     
     // MARK: - Init
+    
     init(from decoder: Decoder) throws {
         
         let container = try decoder.container(keyedBy: Keys.self)
         
-        self.id = try container.decode(Int.self, forKey: .id)
-        self.name = try container.decode(String.self, forKey: .name)
-        self.topImage = try container.decode(String.self, forKey: .topImage)
-        self.mapImage = try container.decode(String.self, forKey: .mapImage)
+        self.exhibitionID = try container.decode(Int.self, forKey: .exhibitionID)
+        self.exhibitionName = try container.decode(String.self, forKey: .exhibitionName)
+        self.exhibitionTopImage = try container.decode(String.self, forKey: .exhibitionTopImage)
+        self.exhibitionMapImage = try container.decode(String.self, forKey: .exhibitionMapImage)
     }
 }

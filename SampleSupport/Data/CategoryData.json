@@ -26,5 +26,29 @@
     {
         "categoryID": 7,
         "categoryName": "キャリア教育"
+    },
+    {
+        "categoryID": 8,
+        "categoryName": "サークル活動"
+    },
+    {
+        "categoryID": 9,
+        "categoryName": "委員会活動"
+    },
+    {
+        "categoryID": 10,
+        "categoryName": "学生起業"
+    },
+    {
+        "categoryID": 11,
+        "categoryName": "学生と教職員の夢"
+    },
+    {
+        "categoryID": 12,
+        "categoryName": "連携企業・客員教員"
+    },
+    {
+        "categoryID": 13,
+        "categoryName": "ビジネス"
     }
 ]

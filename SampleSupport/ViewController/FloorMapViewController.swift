@@ -14,7 +14,7 @@ class FloorMapViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak private var menuBtn: UIButton!
     @IBOutlet weak var scrollView: UIScrollView!
     private var imageView = UIImageView()
-    private var presenter: ExhibitionPresenter!
+//    private var presenter: ExhibitionPresenter!
     private var targetExhibition: [ExhibitionModel] = []
     
     // MARK: - Init
@@ -36,15 +36,15 @@ class FloorMapViewController: UIViewController, UIScrollViewDelegate {
         scrollView.addSubview(imageView)
         self.imageView.backgroundColor = .white
         self.imageView.contentMode = .scaleAspectFit
-
-        setupExhibitionPresenter()
+//        setupExhibitionPresenter()
+        setupFileManeger()
         recognitionUI()
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        imageView.image = UIImage(named: targetExhibition[0].mapImage)
+        imageView.image = UIImage(named: targetExhibition[0].exhibitionMapImage)
         self.imageView.frame = CGRect(x: 0,
                                       y: 0,
                                       width: scrollView.bounds.width,
@@ -53,10 +53,24 @@ class FloorMapViewController: UIViewController, UIScrollViewDelegate {
     
     // MARK: - Helpers
     
-    fileprivate func setupExhibitionPresenter() {
-        presenter = ExhibitionPresenter()
-        presenter.delegate = self
-        presenter.getExhibitionInfo()
+//    fileprivate func setupExhibitionPresenter() {
+//        presenter = ExhibitionPresenter()
+//        presenter.delegate = self
+//        presenter.getExhibitionInfo()
+//    }
+    
+    fileprivate func setupFileManeger() {
+        guard let url = try? FileManager.default.url(for: .documentDirectory,
+                                                     in: .userDomainMask,
+                                                     appropriateFor: nil,
+                                                     create: false)
+                .appendingPathComponent("exhibition.json") else {return}
+        do {
+            let data = try Data(contentsOf: url)
+            self.targetExhibition = try JSONDecoder().decode([ExhibitionModel].self, from: data)
+        } catch {
+            print(error)
+        }
     }
     
     fileprivate func recognitionUI() {
@@ -97,8 +111,8 @@ class FloorMapViewController: UIViewController, UIScrollViewDelegate {
 
 // MARK: - ExhibitionPresenterDelegate
 
-extension FloorMapViewController: ExhibitionPresenterDelegate {
-    func setExhibitionToScreen(_ exhibition: [ExhibitionModel]) {
-        targetExhibition = exhibition
-    }
-}
+//extension FloorMapViewController: ExhibitionPresenterDelegate {
+//    func setExhibitionToScreen(_ exhibition: [ExhibitionModel]) {
+//        targetExhibition = exhibition
+//    }
+//}

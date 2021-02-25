@@ -12,9 +12,9 @@ class ArchiveCell: UITableViewCell {
     // MARK: - Properties
     
     private var id: Int!
-    private var catPresenter  : CategoryPresenter!
+//    private var catPresenter  : CategoryPresenter!
     private var targetCategory: [CategoryModel] = []
-    private var worksPresenter: WorksPresenter!
+//    private var worksPresenter: WorksPresenter!
     private var targetWorks   : [WorksModel] = []
     private var getArchive    : [String : String] = [:]
     
@@ -67,8 +67,9 @@ class ArchiveCell: UITableViewCell {
                          paddingTop: 10,
                          paddingRight: 15)
         getArchive = UserDefaults.standard.dictionary(forKey: "archive")! as! [String : String]
-        setupCategoryPresenter()
-        setupWorksPresenter()
+//        setupCategoryPresenter()
+//        setupWorksPresenter()
+        setupFileManeger()
     }
     
     override func layoutSubviews() {
@@ -77,8 +78,8 @@ class ArchiveCell: UITableViewCell {
         let workID: Int = id - 1
         let catID = targetWorks[workID].categoryID - 1
         let idStr = String(id)
-        categoryName.text = targetCategory[catID].name
-        artworkName.text = targetWorks[workID].name
+        categoryName.text = targetCategory[catID].categoryName
+        artworkName.text = targetWorks[workID].worksName
         timeLabel.text = getArchive[idStr]
     }
 
@@ -88,31 +89,57 @@ class ArchiveCell: UITableViewCell {
     
     // MARK: - Helpers
     
-    fileprivate func setupCategoryPresenter() {
-        catPresenter = CategoryPresenter()
-        catPresenter.delegate = self
-        catPresenter.getCategoryList()
-    }
+//    fileprivate func setupCategoryPresenter() {
+//        catPresenter = CategoryPresenter()
+//        catPresenter.delegate = self
+//        catPresenter.getCategoryList()
+//    }
     
-    fileprivate func setupWorksPresenter() {
-        worksPresenter = WorksPresenter()
-        worksPresenter.delegate = self
-        worksPresenter.getWorksList()
+//    fileprivate func setupWorksPresenter() {
+//        worksPresenter = WorksPresenter()
+//        worksPresenter.delegate = self
+//        worksPresenter.getWorksList()
+//    }
+    
+    fileprivate func setupFileManeger() {
+        guard let url = try? FileManager.default.url(for: .documentDirectory,
+                                                     in: .userDomainMask,
+                                                     appropriateFor: nil,
+                                                     create: false)
+                .appendingPathComponent("category.json") else {return}
+        do {
+            let data = try Data(contentsOf: url)
+            self.targetCategory = try JSONDecoder().decode([CategoryModel].self, from: data)
+        } catch {
+            print(error)
+        }
+        
+        guard let worksURL = try? FileManager.default.url(for: .documentDirectory,
+                                                     in: .userDomainMask,
+                                                     appropriateFor: nil,
+                                                     create: false)
+                .appendingPathComponent("works.json") else {return}
+        do {
+            let data = try Data(contentsOf: worksURL)
+            self.targetWorks = try JSONDecoder().decode([WorksModel].self, from: data)
+        } catch {
+            print(error)
+        }
     }
 }
 
 // MARK: - CategoryPresenterDelegate
 
-extension ArchiveCell: CategoryPresenterDelegate {
-    func setCategoryToScreen(_ category: [CategoryModel]) {
-        targetCategory = category
-    }
-}
+//extension ArchiveCell: CategoryPresenterDelegate {
+//    func setCategoryToScreen(_ category: [CategoryModel]) {
+//        targetCategory = category
+//    }
+//}
 
 // MARK: - WorksPresenterDelegate
 
-extension ArchiveCell: WorksPresenterDelegate {
-    func setWorksToScreen(_ works: [WorksModel]) {
-        targetWorks = works
-    }
-}
+//extension ArchiveCell: WorksPresenterDelegate {
+//    func setWorksToScreen(_ works: [WorksModel]) {
+//        targetWorks = works
+//    }
+//}

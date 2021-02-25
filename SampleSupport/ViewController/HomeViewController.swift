@@ -12,7 +12,7 @@ class HomeViewController: UIViewController {
     // MARK: - Properties
     
     @IBOutlet weak private var menuBtn: UIButton!
-    private var presenter: ExhibitionPresenter!
+//    private var presenter: ExhibitionPresenter!
     private var targetExhibition: [ExhibitionModel] = []
     
     private let imageView: UIImageView = {
@@ -34,22 +34,39 @@ class HomeViewController: UIViewController {
                          left: view.leftAnchor,
                          bottom: view.bottomAnchor,
                          right: view.rightAnchor)
-        setupExhibitionPresenter()
+//        setupExhibitionPresenter()
+        setupFileManeger()
         recognitionUI()
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        imageView.image = UIImage(named: targetExhibition[0].topImage)
+        imageView.image = UIImage(named: targetExhibition[0].exhibitionTopImage)
     }
     
     // MARK: - Helpers
     
-    fileprivate func setupExhibitionPresenter() {
-        presenter = ExhibitionPresenter()
-        presenter.delegate = self
-        presenter.getExhibitionInfo()
+//    fileprivate func setupExhibitionPresenter() {
+//        presenter = ExhibitionPresenter()
+//        presenter.delegate = self
+//        presenter.getExhibitionInfo()
+//    }
+    
+    fileprivate func setupFileManeger() {
+        guard let url = try? FileManager.default.url(for: .documentDirectory,
+                                                     in: .userDomainMask,
+                                                     appropriateFor: nil,
+                                                     create: false)
+                .appendingPathComponent("exhibition.json") else {return}
+        do {
+            let data = try Data(contentsOf: url)
+            print(String(data: data, encoding: .utf8)!)
+            self.targetExhibition = try JSONDecoder().decode([ExhibitionModel].self, from: data)
+            print(self.targetExhibition)
+        } catch {
+            print(error)
+        }
     }
     
     fileprivate func recognitionUI() {
@@ -68,8 +85,8 @@ class HomeViewController: UIViewController {
 
 // MARK: - ExhibitionPresenterDelegate
 
-extension HomeViewController: ExhibitionPresenterDelegate {
-    func setExhibitionToScreen(_ exhibition: [ExhibitionModel]) {
-        targetExhibition = exhibition
-    }
-}
+//extension HomeViewController: ExhibitionPresenterDelegate {
+//    func setExhibitionToScreen(_ exhibition: [ExhibitionModel]) {
+//        targetExhibition = exhibition
+//    }
+//}

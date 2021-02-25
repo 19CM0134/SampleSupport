@@ -173,5 +173,47 @@
         "worksName": "日専祭（学園祭）",
         "imageName": "panel25.pdf",
         "exhibitionID": 1
+    },
+    {
+        "worksID": 26,
+        "categoryID": 8,
+        "worksName": "iUグッズサークル",
+        "imageName": "panel26.pdf",
+        "exhibitionID": 1
+    },
+    {
+        "worksID": 27,
+        "categoryID": 9,
+        "worksName": "委員会紹介",
+        "imageName": "panel27.pdf",
+        "exhibitionID": 1
+    },
+    {
+        "worksID": 28,
+        "categoryID": 10,
+        "worksName": "未来を創る学生起業",
+        "imageName": "panel28.pdf",
+        "exhibitionID": 1
+    },
+    {
+        "worksID": 29,
+        "categoryID": 11,
+        "worksName": "夢を語ろうプロジェクト",
+        "imageName": "panel29.pdf",
+        "exhibitionID": 1
+    },
+    {
+        "worksID": 30,
+        "categoryID": 12,
+        "worksName": "産業界と連携しイノベーターを生み出す",
+        "imageName": "panel30.pdf",
+        "exhibitionID": 1
+    },
+    {
+        "worksID": 31,
+        "categoryID": 13,
+        "worksName": "イノベーションプロジェクト",
+        "imageName": "panel31.pdf",
+        "exhibitionID": 1
     }
 ]

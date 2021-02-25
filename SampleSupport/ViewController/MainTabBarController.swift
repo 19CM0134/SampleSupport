@@ -29,15 +29,15 @@ class MainTabBarController: UITabBarController {
         let btn = UIButton()
         btn.setBackgroundImage(UIImage(named: "nfcBlack"), for: .normal)
         btn.addTarget(self, action: #selector(tappedBtn), for: .touchUpInside)
-
+        
         return btn
     }()
-
+    
     // MARK: - Init
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         tabBar.barTintColor = .white
         tabBar.tintColor = .black
         view.backgroundColor = .white
@@ -57,7 +57,7 @@ class MainTabBarController: UITabBarController {
         button.layer.borderColor = UIColor.darkGray.cgColor
         button.layer.borderWidth = 1.0
     }
-        
+    
     fileprivate func startSession(state: State) {
         self.state = state
         guard NFCNDEFReaderSession.readingAvailable else {
@@ -157,7 +157,7 @@ extension MainTabBarController: NFCNDEFReaderSessionDelegate {
     
     /// - Tag: sessionBecomeActive
     func readerSessionDidBecomeActive(_ session: NFCNDEFReaderSession) {}
-
+    
     /// - Tag: endScanning
     func readerSession(_ session: NFCNDEFReaderSession, didInvalidateWithError error: Error) {
         
