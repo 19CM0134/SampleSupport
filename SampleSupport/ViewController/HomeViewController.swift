@@ -12,11 +12,10 @@ class HomeViewController: UIViewController {
     // MARK: - Properties
     
     @IBOutlet weak private var menuBtn: UIButton!
-//    private var presenter: ExhibitionPresenter!
     private var targetExhibition: [ExhibitionModel] = []
     
     private let imageView: UIImageView = {
-       let iv = UIImageView()
+        let iv = UIImageView()
         iv.backgroundColor = .white
         iv.contentMode = .scaleAspectFit
         
@@ -27,14 +26,13 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         view.backgroundColor = .white
         view.addSubview(imageView)
         imageView.anchor(top: view.topAnchor,
                          left: view.leftAnchor,
                          bottom: view.bottomAnchor,
                          right: view.rightAnchor)
-//        setupExhibitionPresenter()
         setupFileManeger()
         recognitionUI()
     }
@@ -46,12 +44,6 @@ class HomeViewController: UIViewController {
     }
     
     // MARK: - Helpers
-    
-//    fileprivate func setupExhibitionPresenter() {
-//        presenter = ExhibitionPresenter()
-//        presenter.delegate = self
-//        presenter.getExhibitionInfo()
-//    }
     
     fileprivate func setupFileManeger() {
         guard let url = try? FileManager.default.url(for: .documentDirectory,
@@ -82,11 +74,3 @@ class HomeViewController: UIViewController {
         self.present(vc, animated: true, completion: nil)
     }
 }
-
-// MARK: - ExhibitionPresenterDelegate
-
-//extension HomeViewController: ExhibitionPresenterDelegate {
-//    func setExhibitionToScreen(_ exhibition: [ExhibitionModel]) {
-//        targetExhibition = exhibition
-//    }
-//}

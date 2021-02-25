@@ -30,7 +30,7 @@ class DataDownloadViewController: UIViewController {
         let btn = UIButton()
         btn.setTitle("QRcode", for: .normal)
         btn.setTitleColor(.white, for: .normal)
-        btn.titleLabel?.font = UIFont.systemFont(ofSize: 25)
+        btn.titleLabel?.font = UIFont.systemFont(ofSize: 35)
         btn.backgroundColor = .darkGray
         btn.tag = 0
         btn.addTarget(self, action: #selector(tappedBtnAction(sender:)), for: .touchUpInside)
@@ -63,7 +63,8 @@ class DataDownloadViewController: UIViewController {
                        left: view.leftAnchor,
                        paddingTop: Height/2,
                        paddingLeft: Width/15,
-                       width: (Width/5)*2,
+                       paddingRight: Width/15,
+                       width: (Width - Width/7.5),
                        height: (Width/5)*2)
         leftBtn.layer.cornerRadius = 20
     }

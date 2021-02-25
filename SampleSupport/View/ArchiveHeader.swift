@@ -11,7 +11,6 @@ class ArchiveHeader: UIView {
     
     // MARK: - Properties
     
-//    private var presenter: ExhibitionPresenter!
     private var targetExhibition: [ExhibitionModel] = []
     
     private let titleLabel: UILabel = {
@@ -44,10 +43,9 @@ class ArchiveHeader: UIView {
                           paddingLeft: 15)
         addSubview(exhibitionTitle)
         exhibitionTitle.anchor(top: titleLabel.bottomAnchor,
-                             left: leftAnchor,
-                             paddingTop: 10,
-                             paddingLeft: 15)
-//        setupExhibitionPresenter()
+                               left: leftAnchor,
+                               paddingTop: 10,
+                               paddingLeft: 15)
         setupFileManeger()
     }
     
@@ -62,12 +60,6 @@ class ArchiveHeader: UIView {
     }
     
     // MARK: - Helpers
-    
-//    fileprivate func setupExhibitionPresenter() {
-//        presenter = ExhibitionPresenter()
-//        presenter.delegate = self
-//        presenter.getExhibitionInfo()
-//    }
     
     fileprivate func setupFileManeger() {
         guard let url = try? FileManager.default.url(for: .documentDirectory,
@@ -85,11 +77,3 @@ class ArchiveHeader: UIView {
         }
     }
 }
-
-// MARK: - ExhibitionPresenterDelegate
-
-//extension ArchiveHeader: ExhibitionPresenterDelegate {
-//    func setExhibitionToScreen(_ exhibition: [ExhibitionModel]) {
-//        targetExhibition = exhibition
-//    }
-//}

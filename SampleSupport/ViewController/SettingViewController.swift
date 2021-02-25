@@ -14,7 +14,7 @@ class SettingViewController: UIViewController {
     
     private let category = ["履歴の削除"]
     private let WIDTH = UIScreen.main.bounds.width
-
+    
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 26)
@@ -22,15 +22,15 @@ class SettingViewController: UIViewController {
         label.text = "設定"
         label.textAlignment = .left
         label.setDimensions(width: 100, height: 50)
-
+        
         return label
     }()
-
+    
     private let categoryName: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 25)
         label.textColor = .black
-
+        
         return label
     }()
     
@@ -47,7 +47,7 @@ class SettingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         view.backgroundColor = .white
         recognitionUI()
     }
@@ -86,26 +86,28 @@ class SettingViewController: UIViewController {
             let alertController = UIAlertController(title: "履歴を削除します",
                                                     message: "本当によろしいですか？",
                                                     preferredStyle: .alert)
-            alertController.addAction(UIAlertAction(title: "OK",
-                                                    style: .default,
-                                                    handler: {_ in
-                                                        UserDefaults.standard.removeObject(forKey: "archive")
-                                                        UserDefaults.standard.removeObject(forKey: "id")
-                                                        let dialog = UIAlertController(title: "削除しました",
-                                                                                       message: "",
-                                                                                       preferredStyle: .alert)
-                                                        dialog.addAction(UIAlertAction(title: "OK",
-                                                                                       style: .default,
-                                                                                       handler: {_ in
-                                                                                        self.swichBtn.isOn = false
-                                                                                       }))
-                                                        self.present(dialog, animated: true, completion: nil)
-                                                    }))
-            alertController.addAction(UIAlertAction(title: "NO",
-                                                    style: .cancel,
-                                                    handler: {_ in
-                                                        self.swichBtn.isOn = false
-                                                    }))
+            alertController.addAction(UIAlertAction(
+                                        title: "OK",
+                                        style: .default,
+                                        handler: {_ in
+                                            UserDefaults.standard.removeObject(forKey: "archive")
+                                            UserDefaults.standard.removeObject(forKey: "id")
+                                            let dialog = UIAlertController(title: "削除しました",
+                                                                           message: "",
+                                                                           preferredStyle: .alert)
+                                            dialog.addAction(UIAlertAction(title: "OK",
+                                                                           style: .default,
+                                                                           handler: {_ in
+                                                                            self.swichBtn.isOn = false
+                                                                           }))
+                                            self.present(dialog, animated: true, completion: nil)
+                                        }))
+            alertController.addAction(UIAlertAction(
+                                        title: "NO",
+                                        style: .cancel,
+                                        handler: {_ in
+                                            self.swichBtn.isOn = false
+                                        }))
             present(alertController, animated: true, completion: nil)
         } else {
             print("switch off")

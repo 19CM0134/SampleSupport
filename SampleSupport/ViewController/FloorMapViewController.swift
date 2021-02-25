@@ -14,14 +14,13 @@ class FloorMapViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak private var menuBtn: UIButton!
     @IBOutlet weak var scrollView: UIScrollView!
     private var imageView = UIImageView()
-//    private var presenter: ExhibitionPresenter!
     private var targetExhibition: [ExhibitionModel] = []
     
     // MARK: - Init
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         view.backgroundColor = .white
         self.scrollView.delegate = self
         scrollView.maximumZoomScale = 5.0
@@ -36,7 +35,6 @@ class FloorMapViewController: UIViewController, UIScrollViewDelegate {
         scrollView.addSubview(imageView)
         self.imageView.backgroundColor = .white
         self.imageView.contentMode = .scaleAspectFit
-//        setupExhibitionPresenter()
         setupFileManeger()
         recognitionUI()
     }
@@ -52,12 +50,6 @@ class FloorMapViewController: UIViewController, UIScrollViewDelegate {
     }
     
     // MARK: - Helpers
-    
-//    fileprivate func setupExhibitionPresenter() {
-//        presenter = ExhibitionPresenter()
-//        presenter.delegate = self
-//        presenter.getExhibitionInfo()
-//    }
     
     fileprivate func setupFileManeger() {
         guard let url = try? FileManager.default.url(for: .documentDirectory,
@@ -108,11 +100,3 @@ class FloorMapViewController: UIViewController, UIScrollViewDelegate {
         self.present(vc, animated: true, completion: nil)
     }
 }
-
-// MARK: - ExhibitionPresenterDelegate
-
-//extension FloorMapViewController: ExhibitionPresenterDelegate {
-//    func setExhibitionToScreen(_ exhibition: [ExhibitionModel]) {
-//        targetExhibition = exhibition
-//    }
-//}

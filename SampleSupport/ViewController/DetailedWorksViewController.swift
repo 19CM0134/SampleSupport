@@ -14,9 +14,7 @@ class DetailedWorksViewController: UIViewController, UIScrollViewDelegate {
     private let WIDTH = UIScreen.main.bounds.width
     @IBOutlet weak var scrollView: UIScrollView!
     private var imageView     = UIImageView()
-//    private var catPresenter  : CategoryPresenter!
     private var targetCategory: [CategoryModel] = []
-//    private var worksPresenter: WorksPresenter!
     private var targetWorks   : [WorksModel] = []
     private var id: Int!
     
@@ -28,7 +26,7 @@ class DetailedWorksViewController: UIViewController, UIScrollViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         view.backgroundColor = .white
         self.scrollView.delegate = self
         scrollView.maximumZoomScale = 5.0
@@ -41,9 +39,6 @@ class DetailedWorksViewController: UIViewController, UIScrollViewDelegate {
         scrollView.addSubview(imageView)
         self.imageView.backgroundColor = .white
         self.imageView.contentMode = .scaleAspectFit
-        
-//        setupCategoryPresenter()
-//        setupWorksPresenter()
         setupFileManeger()
     }
     
@@ -63,18 +58,6 @@ class DetailedWorksViewController: UIViewController, UIScrollViewDelegate {
     
     // MARK: - Helpers
     
-//    fileprivate func setupCategoryPresenter() {
-//        catPresenter = CategoryPresenter()
-//        catPresenter.delegate = self
-//        catPresenter.getCategoryList()
-//    }
-    
-//    fileprivate func setupWorksPresenter() {
-//        worksPresenter = WorksPresenter()
-//        worksPresenter.delegate = self
-//        worksPresenter.getWorksList()
-//    }
-    
     fileprivate func setupFileManeger() {
         guard let url = try? FileManager.default.url(for: .documentDirectory,
                                                      in: .userDomainMask,
@@ -89,9 +72,9 @@ class DetailedWorksViewController: UIViewController, UIScrollViewDelegate {
         }
         
         guard let worksURL = try? FileManager.default.url(for: .documentDirectory,
-                                                     in: .userDomainMask,
-                                                     appropriateFor: nil,
-                                                     create: false)
+                                                          in: .userDomainMask,
+                                                          appropriateFor: nil,
+                                                          create: false)
                 .appendingPathComponent("works.json") else {return}
         do {
             let data = try Data(contentsOf: worksURL)
@@ -142,19 +125,3 @@ class DetailedWorksViewController: UIViewController, UIScrollViewDelegate {
         self.dismiss(animated: true, completion: nil)
     }
 }
-
-// MARK: - CategoryPresenterDelegate
-
-//extension DetailedWorksViewController: CategoryPresenterDelegate {
-//    func setCategoryToScreen(_ category: [CategoryModel]) {
-//        targetCategory = category
-//    }
-//}
-
-// MARK: - WorksPresenterDelegate
-
-//extension DetailedWorksViewController: WorksPresenterDelegate {
-//    func setWorksToScreen(_ works: [WorksModel]) {
-//        targetWorks = works
-//    }
-//}
