@@ -11,14 +11,14 @@ class ArchiveCell: UITableViewCell {
     
     // MARK: - Properties
     
-    private var id: Int!
+    private var id: String!
     private var catPresenter  : CategoryPresenter!
     private var targetCategory: [CategoryModel] = []
     private var worksPresenter: WorksPresenter!
     private var targetWorks   : [WorksModel] = []
     private var getArchive    : [String : String] = [:]
     
-    public func setId(id: Int) {
+    public func setId(id: String) {
         self.id = id
     }
     
@@ -74,12 +74,14 @@ class ArchiveCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        let workID: Int = id - 1
-        let catID = targetWorks[workID].categoryID - 1
-        let idStr = String(id)
-        categoryName.text = targetCategory[catID].name
-        artworkName.text = targetWorks[workID].name
-        timeLabel.text = getArchive[idStr]
+        for n in 0..<targetWorks.count {
+            if targetWorks[n].tagsID == id {
+                let catID = targetWorks[n].categoryID - 1
+                categoryName.text = targetCategory[catID].categoryName
+                artworkName.text = targetWorks[n].worksName
+            }
+        }
+        timeLabel.text = getArchive[id]
     }
 
     required init?(coder: NSCoder) {

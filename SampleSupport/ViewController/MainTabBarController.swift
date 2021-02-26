@@ -21,9 +21,9 @@ class MainTabBarController: UITabBarController {
     private var session: NFCNDEFReaderSession?
     private var message: NFCNDEFMessage?
     private var state  : State = .standBy
-    private var id     : Int!
+    private var id     : String = ""
     private var archive: [String : String] = [:]
-    private var storage: [Int] = []
+    private var storage: [String] = []
     
     private var button: UIButton = {
         let btn = UIButton()
@@ -116,7 +116,7 @@ class MainTabBarController: UITabBarController {
             }
         }
         stopSession(alert: "読み込み成功")
-        id = Int(String(results.first!))!
+        id = String(results.first!)
         if storage.isEmpty {
             storage.append(id)
         } else {

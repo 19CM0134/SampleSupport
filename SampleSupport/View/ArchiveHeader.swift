@@ -53,7 +53,7 @@ class ArchiveHeader: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        exhibitionTitle.text = targetExhibition[0].name
+        exhibitionTitle.text = targetExhibition[0].exhibitionName
     }
     
     required init?(coder: NSCoder) {

@@ -4,174 +4,247 @@
         "categoryID": 1,
         "worksName": "NINJA THE MONSTER",
         "imageName": "panel01.pdf",
-        "exhibitionID": 1
+        "exhibitionID": 1,
+        "tagsID": "JEC70thAnniversary01"
     },
     {
         "worksID": 2,
         "categoryID": 1,
         "worksName": "進級制作における産学連携授業",
         "imageName": "panel02.pdf",
-        "exhibitionID": 1
+        "exhibitionID": 1,
+        "tagsID": "JEC70thAnniversary02"
     },
     {
         "worksID": 3,
         "categoryID": 1,
         "worksName": "WADJET",
         "imageName": "panel03.pdf",
-        "exhibitionID": 1
+        "exhibitionID": 1,
+        "tagsID": "JEC70thAnniversary03"
     },
     {
         "worksID": 4,
         "categoryID": 1,
         "worksName": "CTFによる総合演習教材",
         "imageName": "panel04.pdf",
-        "exhibitionID": 1
+        "exhibitionID": 1,
+        "tagsID": "JEC70thAnniversary04"
     },
     {
         "worksID": 5,
         "categoryID": 1,
         "worksName": "Webook",
         "imageName": "panel05.pdf",
-        "exhibitionID": 1
+        "exhibitionID": 1,
+        "tagsID": "JEC70thAnniversary05"
     },
     {
         "worksID": 6,
         "categoryID": 1,
         "worksName": "夢絵システム",
         "imageName": "panel06.pdf",
-        "exhibitionID": 1
+        "exhibitionID": 1,
+        "tagsID": "JEC70thAnniversary06"
     },
     {
         "worksID": 7,
         "categoryID": 1,
         "worksName": "Lusola",
         "imageName": "panel07.pdf",
-        "exhibitionID": 1
+        "exhibitionID": 1,
+        "tagsID": "JEC70thAnniversary07"
     },
     {
         "worksID": 8,
         "categoryID": 2,
         "worksName": "オリジナル教材",
         "imageName": "panel08.pdf",
-        "exhibitionID": 1
+        "exhibitionID": 1,
+        "tagsID": "JEC70thAnniversary08"
     },
     {
         "worksID": 9,
         "categoryID": 3,
         "worksName": "AIMRACING",
         "imageName": "panel09.pdf",
-        "exhibitionID": 1
+        "exhibitionID": 1,
+        "tagsID": "JEC70thAnniversary09"
     },
     {
         "worksID": 10,
         "categoryID": 3,
         "worksName": "CUBEATS",
         "imageName": "panel10.pdf",
-        "exhibitionID": 1
+        "exhibitionID": 1,
+        "tagsID": "JEC70thAnniversary10"
     },
     {
         "worksID": 11,
         "categoryID": 3,
         "worksName": "学生映像作品の上映",
         "imageName": "panel11.pdf",
-        "exhibitionID": 1
+        "exhibitionID": 1,
+        "tagsID": "JEC70thAnniversary11"
     },
     {
         "worksID": 12,
         "categoryID": 3,
         "worksName": "ART SCREEN",
         "imageName": "panel12.pdf",
-        "exhibitionID": 1
+        "exhibitionID": 1,
+        "tagsID": "JEC70thAnniversary12"
     },
     {
         "worksID": 13,
         "categoryID": 3,
         "worksName": "テスラコイルによる音楽演奏",
         "imageName": "panel13.pdf",
-        "exhibitionID": 1
+        "exhibitionID": 1,
+        "tagsID": "JEC70thAnniversary13"
     },
     {
         "worksID": 14,
         "categoryID": 3,
         "worksName": "辛いシシトウの特徴分析と仕分け機の開発",
         "imageName": "panel14.pdf",
-        "exhibitionID": 1
+        "exhibitionID": 1,
+        "tagsID": "JEC70thAnniversary14"
     },
     {
         "worksID": 15,
         "categoryID": 4,
         "worksName": "かりきゅらすかい",
         "imageName": "panel15.pdf",
-        "exhibitionID": 1
+        "exhibitionID": 1,
+        "tagsID": "JEC70thAnniversary15"
     },
     {
         "worksID": 16,
         "categoryID": 5,
         "worksName": "技能五輪全国・国際大会実績",
         "imageName": "panel16.pdf",
-        "exhibitionID": 1
+        "exhibitionID": 1,
+        "tagsID": "JEC70thAnniversary16"
     },
     {
         "worksID": 17,
         "categoryID": 6,
         "worksName": "インサニア",
         "imageName": "panel17.pdf",
-        "exhibitionID": 1
+        "exhibitionID": 1,
+        "tagsID": "JEC70thAnniversary17"
     },
     {
         "worksID": 18,
         "categoryID": 6,
         "worksName": "ブラインド＆ソード",
         "imageName": "panel18.pdf",
-        "exhibitionID": 1
+        "exhibitionID": 1,
+        "tagsID": "JEC70thAnniversary18"
     },
     {
         "worksID": 19,
         "categoryID": 6,
         "worksName": "学ラボー",
         "imageName": "panel19.pdf",
-        "exhibitionID": 1
+        "exhibitionID": 1,
+        "tagsID": "JEC70thAnniversary19"
     },
     {
         "worksID": 20,
         "categoryID": 6,
         "worksName": "プログラムコンテストへの取組み",
         "imageName": "panel20.pdf",
-        "exhibitionID": 1
+        "exhibitionID": 1,
+        "tagsID": "JEC70thAnniversary20"
     },
     {
         "worksID": 21,
         "categoryID": 7,
         "worksName": "キャリアサポーター",
         "imageName": "panel21.pdf",
-        "exhibitionID": 1
+        "exhibitionID": 1,
+        "tagsID": "JEC70thAnniversary21"
     },
     {
         "worksID": 22,
         "categoryID": 7,
         "worksName": "留学生サポート",
         "imageName": "panel22.pdf",
-        "exhibitionID": 1
+        "exhibitionID": 1,
+        "tagsID": "JEC70thAnniversary22"
     },
     {
         "worksID": 23,
         "categoryID": 7,
         "worksName": "学生自治会・地域貢献活動",
         "imageName": "panel23.pdf",
-        "exhibitionID": 1
+        "exhibitionID": 1,
+        "tagsID": "JEC70thAnniversary23"
     },
     {
         "worksID": 24,
         "categoryID": 7,
         "worksName": "スポーツフェスティバル",
         "imageName": "panel24.pdf",
-        "exhibitionID": 1
+        "exhibitionID": 1,
+        "tagsID": "JEC70thAnniversary24"
     },
     {
         "worksID": 25,
         "categoryID": 7,
         "worksName": "日専祭（学園祭）",
         "imageName": "panel25.pdf",
-        "exhibitionID": 1
+        "exhibitionID": 1,
+        "tagsID": "JEC70thAnniversary25"
+    },
+    {
+        "worksID": 26,
+        "categoryID": 8,
+        "worksName": "iUグッズサークル",
+        "imageName": "panel26.pdf",
+        "exhibitionID": 1,
+        "tagsID": "JEC70thAnniversary26"
+    },
+    {
+        "worksID": 27,
+        "categoryID": 9,
+        "worksName": "委員会紹介",
+        "imageName": "panel27.pdf",
+        "exhibitionID": 1,
+        "tagsID": "JEC70thAnniversary27"
+    },
+    {
+        "worksID": 28,
+        "categoryID": 10,
+        "worksName": "未来を創る学生起業",
+        "imageName": "panel28.pdf",
+        "exhibitionID": 1,
+        "tagsID": "JEC70thAnniversary28"
+    },
+    {
+        "worksID": 29,
+        "categoryID": 11,
+        "worksName": "夢を語ろうプロジェクト",
+        "imageName": "panel29.pdf",
+        "exhibitionID": 1,
+        "tagsID": "JEC70thAnniversary29"
+    },
+    {
+        "worksID": 30,
+        "categoryID": 12,
+        "worksName": "産業界と連携しイノベーターを生み出す",
+        "imageName": "panel30.pdf",
+        "exhibitionID": 1,
+        "tagsID": "JEC70thAnniversary30"
+    },
+    {
+        "worksID": 31,
+        "categoryID": 13,
+        "worksName": "イノベーションプロジェクト",
+        "imageName": "panel31.pdf",
+        "exhibitionID": 1,
+        "tagsID": "JEC70thAnniversary31"
     }
 ]

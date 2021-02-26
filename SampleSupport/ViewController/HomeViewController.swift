@@ -41,7 +41,7 @@ class HomeViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        imageView.image = UIImage(named: targetExhibition[0].topImage)
+        imageView.image = UIImage(named: targetExhibition[0].exhibitionTopImage)
     }
     
     // MARK: - Helpers

@@ -14,7 +14,7 @@ class ArchiveViewController: UIViewController {
     private var tableView = UITableView()
     private let reuseIdentifier = "ArchiveCell"
     private var archiveHeader   = ArchiveHeader()
-    private var getId: [Int] = []
+    private var getId: [String] = []
     
     // MARK: - Init
 
@@ -23,7 +23,7 @@ class ArchiveViewController: UIViewController {
 
         view.backgroundColor = .white
         configureTableView()
-        getId = UserDefaults.standard.array(forKey: "id") as! [Int]
+        getId = UserDefaults.standard.array(forKey: "id") as! [String]
     }
     
     // MARK: - Helpers
