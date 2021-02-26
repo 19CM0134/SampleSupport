@@ -14,6 +14,7 @@ class DetailedWorksViewController: UIViewController, UIScrollViewDelegate {
     private let WIDTH = UIScreen.main.bounds.width
     @IBOutlet weak var scrollView: UIScrollView!
     private var imageView     = UIImageView()
+    private var img           : UIImage?
     private var targetCategory: [CategoryModel] = []
     private var targetWorks   : [WorksModel] = []
     private var id            : String = ""

@@ -40,7 +40,7 @@ class HomeViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        imageView.image = UIImage(named: targetExhibition[0].exhibitionTopImage)
+        imageView.image = UIImage(named: self.targetExhibition[0].exhibitionTopImage)
     }
     
     // MARK: - Helpers
@@ -53,9 +53,7 @@ class HomeViewController: UIViewController {
                 .appendingPathComponent("exhibition.json") else {return}
         do {
             let data = try Data(contentsOf: url)
-            print(String(data: data, encoding: .utf8)!)
             self.targetExhibition = try JSONDecoder().decode([ExhibitionModel].self, from: data)
-            print(self.targetExhibition)
         } catch {
             print(error)
         }

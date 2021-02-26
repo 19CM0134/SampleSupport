@@ -17,6 +17,7 @@ class DataDownloadViewController: UIViewController {
     private var exhibition: [ExhibitionModel]?
     private var category  : [CategoryModel]?
     private var works     : [WorksModel]?
+    private var targetExhibition: [ExhibitionModel] = []
     
     private let iconImage: UIImageView = {
         let image = UIImageView()
@@ -33,6 +34,18 @@ class DataDownloadViewController: UIViewController {
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 35)
         btn.backgroundColor = .darkGray
         btn.tag = 0
+        btn.addTarget(self, action: #selector(tappedBtnAction(sender:)), for: .touchUpInside)
+        
+        return btn
+    }()
+    
+    private let rightBtn: UIButton = {
+        let btn = UIButton()
+        btn.setTitle("前回の展示会", for: .normal)
+        btn.setTitleColor(.white, for: .normal)
+        btn.titleLabel?.font = UIFont.systemFont(ofSize: 26)
+        btn.backgroundColor = .darkGray
+        btn.tag = 1
         btn.addTarget(self, action: #selector(tappedBtnAction(sender:)), for: .touchUpInside)
         
         return btn
@@ -63,10 +76,17 @@ class DataDownloadViewController: UIViewController {
                        left: view.leftAnchor,
                        paddingTop: Height/2,
                        paddingLeft: Width/15,
-                       paddingRight: Width/15,
-                       width: (Width - Width/7.5),
+                       width: (Width/5)*2,
                        height: (Width/5)*2)
         leftBtn.layer.cornerRadius = 20
+        
+        view.addSubview(rightBtn)
+        rightBtn.anchor(top: leftBtn.topAnchor,
+                        left: leftBtn.rightAnchor,
+                        paddingLeft: Width/15,
+                        width: (Width/5)*2,
+                        height: (Width/5)*2)
+        rightBtn.layer.cornerRadius = 20
     }
     
     // MARK: - Selecters
@@ -76,6 +96,34 @@ class DataDownloadViewController: UIViewController {
             let sb = UIStoryboard(name: "Main", bundle: nil)
             let vc = sb.instantiateViewController(identifier: "qrcode") as! QRcodeReaderViewController
             self.present(vc, animated: true, completion: nil)
+        } else if sender.tag == 1 {
+            guard let url = try? FileManager.default.url(for: .documentDirectory,
+                                                         in: .userDomainMask,
+                                                         appropriateFor: nil,
+                                                         create: false)
+                    .appendingPathComponent("exhibition.json") else {return}
+            do {
+                let data = try Data(contentsOf: url)
+                self.targetExhibition = try JSONDecoder().decode([ExhibitionModel].self, from: data)
+                print("DataDownload: exhibition.jsonファイルが存在します")
+                let sb = UIStoryboard(name: "Main", bundle: nil)
+                let vc = sb.instantiateViewController(identifier: "tab") as! MainTabBarController
+                vc.modalPresentationStyle = .fullScreen
+                self.present(vc, animated: true, completion: nil)
+            } catch {
+                print(error)
+                let alertController = UIAlertController(
+                    title: "前回の展示会の履歴が存在しません",
+                    message: "QRcodeで展示会情報を読み取ってください",
+                    preferredStyle: .alert)
+                alertController.addAction(UIAlertAction(
+                                            title: "OK",
+                                            style: .default,
+                                            handler: {_ in
+                                                return
+                                            }))
+                self.present(alertController, animated: true, completion: nil)
+            }
         } else {
             print("no tag number")
         }

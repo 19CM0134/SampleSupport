@@ -101,6 +101,21 @@ extension QRcodeReaderViewController: QRScannerViewDelegate {
     // Success
     func qrScannerView(_ qrScannerView: QRScannerView, didSuccess code: String) {
         print(code)
+        if !code.contains("http") || !code.contains("\\") {
+            let alert = UIAlertController(
+                title: "展示会情報を読み取れませんでした",
+                message: "読み取ったQRcodeは展示会情報のものではありません",
+                preferredStyle: .alert)
+            alert.addAction(UIAlertAction(
+                                title: "OK",
+                                style: .default,
+                                handler: {_ in
+                                    self.dismiss(animated: true,
+                                                 completion: nil)
+                                }))
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
         let idx = code.index(before: code.firstIndex(of: "\\")!)
         let idx1 = code.index(after: code.firstIndex(of: "\\")!)
         let idx2 = code.lastIndex(of: "\\")

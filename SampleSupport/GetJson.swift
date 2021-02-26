@@ -12,19 +12,20 @@ func getExhibiJson(url: String) -> [ExhibitionModel]? {
     let semaphore = DispatchSemaphore(value: 0)
     var result: [ExhibitionModel]?
     
-    let task = URLSession.shared.dataTask(with: url.url!,completionHandler:
-                                            { data, response, error in
-                                                do {
-                                                    guard (response as? HTTPURLResponse) != nil else { return }
-                                                    result = try JSONDecoder().decode( [ExhibitionModel].self, from: data!)
-                                                    semaphore.signal()
-                                                    print("JSONDecode処理終了")
-                                                } catch (let message) {
-                                                    print("URLの読み込みエラー発生")
-                                                    print(message)
-                                                    return
-                                                }
-                                            })
+    let task = URLSession.shared.dataTask(
+        with: url.url!,completionHandler:
+            { data, response, error in
+                do {
+                    guard (response as? HTTPURLResponse) != nil else { return }
+                    result = try JSONDecoder().decode( [ExhibitionModel].self, from: data!)
+                    semaphore.signal()
+                    print("JSONDecode処理終了")
+                } catch (let message) {
+                    print("URLの読み込みエラー発生")
+                    print(message)
+                    return
+                }
+            })
     task.resume()
     semaphore.wait()
     return result
@@ -35,19 +36,20 @@ func getCatJson(url: String) -> [CategoryModel]? {
     let semaphore = DispatchSemaphore(value: 0)
     var result: [CategoryModel]?
     
-    let task = URLSession.shared.dataTask(with: url.url!,completionHandler:
-                                            { data, response, error in
-                                                do {
-                                                    guard (response as? HTTPURLResponse) != nil else { return }
-                                                    result = try JSONDecoder().decode( [CategoryModel].self, from: data!)
-                                                    semaphore.signal()
-                                                    print("JSONDecode処理終了")
-                                                } catch (let message) {
-                                                    print("URLの読み込みエラー発生")
-                                                    print(message)
-                                                    return
-                                                }
-                                            })
+    let task = URLSession.shared.dataTask(
+        with: url.url!,completionHandler:
+            { data, response, error in
+                do {
+                    guard (response as? HTTPURLResponse) != nil else { return }
+                    result = try JSONDecoder().decode( [CategoryModel].self, from: data!)
+                    semaphore.signal()
+                    print("JSONDecode処理終了")
+                } catch (let message) {
+                    print("URLの読み込みエラー発生")
+                    print(message)
+                    return
+                }
+            })
     task.resume()
     semaphore.wait()
     return result
@@ -57,19 +59,20 @@ func getWorksJson(url: String) -> [WorksModel]? {
     guard let url: URLComponents = URLComponents(string: url) else { return nil }
     let semaphore = DispatchSemaphore(value: 0)
     var result: [WorksModel]?
-    let task = URLSession.shared.dataTask(with: url.url!,completionHandler:
-                                            { data, response, error in
-                                                do {
-                                                    guard (response as? HTTPURLResponse) != nil else { return }
-                                                    result = try JSONDecoder().decode( [WorksModel].self, from: data!)
-                                                    semaphore.signal()
-                                                    print("JSONDecode処理終了")
-                                                } catch (let message) {
-                                                    print("URLの読み込みエラー発生")
-                                                    print(message)
-                                                    return
-                                                }
-                                            })
+    let task = URLSession.shared.dataTask(
+        with: url.url!,completionHandler:
+            { data, response, error in
+                do {
+                    guard (response as? HTTPURLResponse) != nil else { return }
+                    result = try JSONDecoder().decode( [WorksModel].self, from: data!)
+                    semaphore.signal()
+                    print("JSONDecode処理終了")
+                } catch (let message) {
+                    print("URLの読み込みエラー発生")
+                    print(message)
+                    return
+                }
+            })
     task.resume()
     semaphore.wait()
     return result

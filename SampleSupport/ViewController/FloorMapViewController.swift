@@ -42,7 +42,7 @@ class FloorMapViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        imageView.image = UIImage(named: targetExhibition[0].exhibitionMapImage)
+        imageView.image = UIImage(named: self.targetExhibition[0].exhibitionMapImage)
         self.imageView.frame = CGRect(x: 0,
                                       y: 0,
                                       width: scrollView.bounds.width,
