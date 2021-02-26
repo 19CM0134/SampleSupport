@@ -16,9 +16,9 @@ class DetailedWorksViewController: UIViewController, UIScrollViewDelegate {
     private var imageView     = UIImageView()
     private var targetCategory: [CategoryModel] = []
     private var targetWorks   : [WorksModel] = []
-    private var id: Int!
+    private var id            : String = ""
     
-    public func setter(id: Int) {
+    public func setter(id: String) {
         self.id = id
     }
     
@@ -45,11 +45,14 @@ class DetailedWorksViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        let workID: Int = id - 1
-        let catID = targetWorks[workID].categoryID - 1
-        setNavBar(category: targetCategory[catID].categoryName,
-                  title: targetWorks[workID].worksName)
-        imageView.image = UIImage(named: targetWorks[workID].imageName)
+        for n in 0..<targetWorks.count {
+            if targetWorks[n].tagsID == id {
+                let catID = targetWorks[n].categoryID - 1
+                setNavBar(category: targetCategory[catID].categoryName,
+                          title: targetWorks[n].worksName)
+                imageView.image = UIImage(named: targetWorks[n].imageName)
+            }
+        }
         self.imageView.frame = CGRect(x: 0,
                                       y: 0,
                                       width: scrollView.frame.width,

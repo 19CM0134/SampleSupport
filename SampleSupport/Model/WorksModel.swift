@@ -15,6 +15,7 @@ struct WorksModel: Codable {
     let worksName: String
     let imageName: String
     let exhibitionID: Int
+    let tagsID: String
     
     private enum Keys: String, CodingKey {
         case worksID = "worksID"
@@ -22,6 +23,7 @@ struct WorksModel: Codable {
         case worksName = "worksName"
         case imageName = "imageName"
         case exhibitionID = "exhibitionID"
+        case tagsID = "tagsID"
     }
     
     // MARK: - Init
@@ -34,6 +36,6 @@ struct WorksModel: Codable {
         self.worksName = try container.decode(String.self, forKey: .worksName)
         self.imageName = try container.decode(String.self, forKey: .imageName)
         self.exhibitionID = try container.decode(Int.self, forKey: .exhibitionID)
+        self.tagsID = try container.decode(String.self, forKey: .tagsID)
     }
 }
-

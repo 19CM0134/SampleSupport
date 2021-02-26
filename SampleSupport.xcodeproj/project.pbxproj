@@ -3,12 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		2432194BC89DAD0BCFDEB98F /* Pods_SampleSupportTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 619A1723DEBACC055B3AB576 /* Pods_SampleSupportTests.framework */; };
-		7F2CC9EE25E65BF200376645 /* ExhibiPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F2CC9ED25E65BF200376645 /* ExhibiPresenter.swift */; };
 		7F2CCA0125E77B5500376645 /* QRcodeReaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F2CCA0025E77B5500376645 /* QRcodeReaderViewController.swift */; };
 		7F5541D025DFC2720037311A /* DataDownloadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5541CF25DFC2720037311A /* DataDownloadViewController.swift */; };
 		7F5541D525DFC7DD0037311A /* GetJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5541D425DFC7DD0037311A /* GetJson.swift */; };
@@ -66,7 +65,6 @@
 		333B6505948AC3B60A31FD9D /* Pods-SampleSupport.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SampleSupport.release.xcconfig"; path = "Target Support Files/Pods-SampleSupport/Pods-SampleSupport.release.xcconfig"; sourceTree = "<group>"; };
 		3742C3439A471F7B53384B90 /* Pods_SampleSupport.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SampleSupport.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		619A1723DEBACC055B3AB576 /* Pods_SampleSupportTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SampleSupportTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7F2CC9ED25E65BF200376645 /* ExhibiPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExhibiPresenter.swift; sourceTree = "<group>"; };
 		7F2CCA0025E77B5500376645 /* QRcodeReaderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRcodeReaderViewController.swift; sourceTree = "<group>"; };
 		7F5541CF25DFC2720037311A /* DataDownloadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataDownloadViewController.swift; sourceTree = "<group>"; };
 		7F5541D425DFC7DD0037311A /* GetJson.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetJson.swift; sourceTree = "<group>"; };
@@ -151,7 +149,6 @@
 				91D8003EAB7E52AD871D8B0F /* Pods-SampleSupportTests.debug.xcconfig */,
 				D04044BD6B2C210D4FC22E1C /* Pods-SampleSupportTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -287,7 +284,6 @@
 				7FC1339A25DE0F8900498DDF /* ExhibitionPresenter.swift */,
 				7FC1339F25DE112B00498DDF /* CategoryPresenter.swift */,
 				7FC133A425DE121700498DDF /* WorksPresenter.swift */,
-				7F2CC9ED25E65BF200376645 /* ExhibiPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -544,7 +540,6 @@
 				7FC1337A25DE0A7000498DDF /* ExhibitionModel.swift in Sources */,
 				7FBC7CDB25B74A7600AB07EA /* ArchiveCell.swift in Sources */,
 				7FBC7CCB25B74A3E00AB07EA /* MainTabBarController.swift in Sources */,
-				7F2CC9EE25E65BF200376645 /* ExhibiPresenter.swift in Sources */,
 				7FBC7CCF25B74A3E00AB07EA /* FloorMapViewController.swift in Sources */,
 				7F2CCA0125E77B5500376645 /* QRcodeReaderViewController.swift in Sources */,
 				7FBC7C9025B7489D00AB07EA /* SceneDelegate.swift in Sources */,
