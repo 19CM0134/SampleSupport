@@ -44,9 +44,9 @@ class ArchiveHeader: UIView {
                           paddingLeft: 15)
         addSubview(exhibitionTitle)
         exhibitionTitle.anchor(top: titleLabel.bottomAnchor,
-                             left: leftAnchor,
-                             paddingTop: 10,
-                             paddingLeft: 15)
+                               left: leftAnchor,
+                               paddingTop: 10,
+                               paddingLeft: 15)
         setupExhibitionPresenter()
     }
     

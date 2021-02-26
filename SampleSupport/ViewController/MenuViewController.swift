@@ -15,7 +15,7 @@ class MenuViewController: UIViewController {
     private let Height = UIScreen.main.bounds.height
     
     private var backButton: UIButton = {
-       let btn = UIButton()
+        let btn = UIButton()
         btn.setBackgroundImage(UIImage(systemName: "xmark"), for: .normal)
         btn.tintColor = .white
         btn.addTarget(self, action: #selector(tappedBackBtn), for: .touchUpInside)
@@ -26,14 +26,14 @@ class MenuViewController: UIViewController {
     private var btnArray: [UIButton] = []
     
     private var button1: UIButton = {
-       let btn = UIButton()
+        let btn = UIButton()
         btn.setTitle("設定", for: .normal)
         
         return btn
     }()
     
     private var button2: UIButton = {
-       let btn = UIButton()
+        let btn = UIButton()
         btn.setTitle("履歴", for: .normal)
         
         return btn
@@ -43,8 +43,8 @@ class MenuViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-       recognitionUI()
+        
+        recognitionUI()
     }
     
     // MARK: - Helpers

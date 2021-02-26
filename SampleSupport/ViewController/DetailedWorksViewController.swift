@@ -28,7 +28,7 @@ class DetailedWorksViewController: UIViewController, UIScrollViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         view.backgroundColor = .white
         self.scrollView.delegate = self
         scrollView.maximumZoomScale = 5.0
@@ -57,12 +57,6 @@ class DetailedWorksViewController: UIViewController, UIScrollViewDelegate {
                 imageView.image = UIImage(named: targetWorks[n].imageName)
             }
         }
-        
-//        let workID: Int = id - 1
-//        let catID = targetWorks[workID].categoryID - 1
-//        setNavBar(category: targetCategory[catID].categoryName,
-//                  title: targetWorks[workID].worksName)
-//        imageView.image = UIImage(named: targetWorks[workID].imageName)
         self.imageView.frame = CGRect(x: 0,
                                       y: 0,
                                       width: scrollView.frame.width,

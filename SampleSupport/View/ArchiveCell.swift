@@ -23,7 +23,7 @@ class ArchiveCell: UITableViewCell {
     }
     
     private let categoryName: UILabel = {
-       let label = UILabel()
+        let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 15)
         label.textColor = .darkGray
         
@@ -31,7 +31,7 @@ class ArchiveCell: UITableViewCell {
     }()
     
     private let artworkName: UILabel = {
-       let label = UILabel()
+        let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 22)
         label.textColor = .black
         
@@ -39,15 +39,15 @@ class ArchiveCell: UITableViewCell {
     }()
     
     private let timeLabel: UILabel = {
-       let label = UILabel()
+        let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 15)
         label.textColor = .darkGray
         
         return label
     }()
-
+    
     // MARK: - Init
-
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
@@ -83,7 +83,7 @@ class ArchiveCell: UITableViewCell {
         }
         timeLabel.text = getArchive[id]
     }
-
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

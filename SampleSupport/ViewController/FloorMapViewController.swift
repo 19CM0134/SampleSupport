@@ -21,7 +21,7 @@ class FloorMapViewController: UIViewController, UIScrollViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         view.backgroundColor = .white
         self.scrollView.delegate = self
         scrollView.maximumZoomScale = 5.0
@@ -36,7 +36,7 @@ class FloorMapViewController: UIViewController, UIScrollViewDelegate {
         scrollView.addSubview(imageView)
         self.imageView.backgroundColor = .white
         self.imageView.contentMode = .scaleAspectFit
-
+        
         setupExhibitionPresenter()
         recognitionUI()
     }

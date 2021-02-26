@@ -16,7 +16,7 @@ class HomeViewController: UIViewController {
     private var targetExhibition: [ExhibitionModel] = []
     
     private let imageView: UIImageView = {
-       let iv = UIImageView()
+        let iv = UIImageView()
         iv.backgroundColor = .white
         iv.contentMode = .scaleAspectFit
         
@@ -27,7 +27,7 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         view.backgroundColor = .white
         view.addSubview(imageView)
         imageView.anchor(top: view.topAnchor,

@@ -17,10 +17,10 @@ class ArchiveViewController: UIViewController {
     private var getId: [String] = []
     
     // MARK: - Init
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         view.backgroundColor = .white
         configureTableView()
         getId = UserDefaults.standard.array(forKey: "id") as! [String]
